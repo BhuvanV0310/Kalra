@@ -33,23 +33,23 @@ const Contact = () => {
     {
       icon: Clock,
       title: "Hours",
-      details: ["24/7 Customer Support", "Emergency Services Available"],
+      details: ["24/7 Customer Support", ],
       color: "from-blue-500 to-blue-600"
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@kalrapackersandmovers.com", "support@kalrapackersandmovers.com"],
+      details: ["offers@kalrapackersmovers.com", "support@kalrapackersandmovers.com"],
       color: "from-orange-500 to-orange-600"
     },
     {
       icon: MapPin,
       title: "Address",
-      details: ["Raajpuri, Opp sector-5", "Dwarka New Delhi -110075"],
+      details: ["474, Plot, Block-C, Sector 6 Dwarka, Dwarka, New Delhi, Delhi, 110075"],
       color: "from-green-500 to-green-600"
     },
     {
-      icon: Phone,
+      icon: Phone,  
       title: "Phone",
       details: ["+91-7292010102", "+91-9876543210"],
       color: "from-purple-500 to-purple-600"
@@ -86,6 +86,93 @@ const Contact = () => {
       {/* Contact Info Cards */}
   <section className="py-20 bg-yellow-200">
         <div className="container mx-auto px-4">
+          {/* Contact Form */}
+          <div className="grid lg:grid-cols-2 gap-12">
+            <motion.div 
+              {...fadeInUp}
+              className="space-y-8"
+            >
+              {/* Why Choose Us */}
+              <Card className="shadow-card">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-4 text-foreground">Why Us?</h3>
+                  <div className="space-y-3">
+                  </div>
+                    {[
+                      "30+ years experience",
+                      "Free, no-obligation quotes",
+                      "Transparent pricing",
+                      "Customer Satisfaction",
+                      "Customized moving solutions",
+                    ].map((reason, idx) => (
+                      <div key={idx} className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                        <span className="text-muted-foreground">{reason}</span>
+                      </div>
+                    ))}
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div {...fadeInUp}>
+              <h2 className="text-3xl font-bold mb-6 text-foreground">Get Your Free Quote</h2>
+                <form id="quote-form" className="space-y-6" ref={formRef} onSubmit={async (e) => {
+                e.preventDefault();
+                setSending(true);
+                setError("");
+                setSent(false);
+                try {
+                  const result = await emailjs.sendForm(
+                  "service_x7x8eoi",
+                  "template_6ixa1vr",
+                  formRef.current,
+                  "MMQt4x2BmjQgdMDOD"
+                  );
+                  if (result.status === 200) {
+                  setSent(true);
+                  } else {
+                  setError("Failed to send. Please try again later.");
+                  }
+                } catch (err) {
+                  setError("Failed to send. Please check your internet connection or try again later.");
+                }
+                setSending(false);
+                }}>
+                <div className="relative mb-4">
+                  <Input 
+                  name="user_mobile" 
+                  type="tel" 
+                  required 
+                  pattern="[0-9]{10}" 
+                  className="peer pt-6 bg-gray-100" 
+                  placeholder=" " 
+                  />
+                  <label className="absolute inset-0 flex items-center justify-center text-sm text-black transition-all pointer-events-none">
+                  Mobile Number *
+                  </label>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-black mb-2">
+                  Additional Details
+                  </label>
+                  <Textarea 
+                  name="additional_details"
+                  placeholder="Tell us about your moving requirements, number of rooms, special items, etc."
+                  rows={4}
+                  className="bg-gray-100"
+                  />
+                </div>
+                <Button className="w-full bg-gradient-primary hover:shadow-button group" size="lg" type="submit" disabled={sending}>
+                  <Send className="mr-2 h-4 w-4" />
+                  {sending ? "Sending..." : "Send Quote Request"}
+                </Button>
+                {sent && <div className="text-green-600 mt-2">Quote request sent successfully!</div>}
+                {error && <div className="text-red-600 mt-2">{error}</div>}
+                </form>
+            </motion.div>
+          </div>
+        </div>
+        <div className="container mx-auto mt-24 mb-0 pb-0 px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {contactInfo.map((info, index) => (
               <motion.div
@@ -113,91 +200,8 @@ const Contact = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Contact Form */}
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div 
-              {...fadeInUp}
-              className="space-y-8"
-            >
-              {/* Why Choose Us */}
-              <Card className="shadow-card">
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold mb-4 text-foreground">Why Us?</h3>
-                  <div className="space-y-3">
-                  </div>
-                    {[
-                      "30+ years experience",
-                      "Free, no-obligation quotes",
-                      "Transparent pricing",
-                      "Customer Satisfaction",
-                      "Customized moving solutions",
-                    ].map((reason, idx) => (
-                      <div key={idx} className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                        <span className="text-muted-foreground">{reason}</span>
-                      </div>
-                    ))}
-                  <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
-                    Call Emergency Hotline
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div {...fadeInUp}>
-              <h2 className="text-3xl font-bold mb-6 text-foreground">Get Your Free Quote</h2>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Fill out the form below and our team will get back to you within 24 hours 
-                with a detailed quote for your moving needs.
-              </p>
-              <form id="quote-form" className="space-y-6" ref={formRef} onSubmit={async (e) => {
-                e.preventDefault();
-                setSending(true);
-                setError("");
-                setSent(false);
-                try {
-                  const result = await emailjs.sendForm(
-                    "service_x7x8eoi",
-                    "template_6ixa1vr",
-                    formRef.current,
-                    "MMQt4x2BmjQgdMDOD"
-                  );
-                  if (result.status === 200) {
-                    setSent(true);
-                  } else {
-                    setError("Failed to send. Please try again later.");
-                  }
-                } catch (err) {
-                  setError("Failed to send. Please check your internet connection or try again later.");
-                }
-                setSending(false);
-              }}>
-                <div className="relative mb-4">
-                  <Input name="user_email" type="email" required className="peer pt-6 bg-gray-100" placeholder=" " />
-                  <label className="absolute inset-0 flex items-center justify-center text-sm text-black transition-all pointer-events-none">Email Address *</label>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-black mb-2">
-                    Additional Details
-                  </label>
-                  <Textarea 
-                    name="additional_details"
-                    placeholder="Tell us about your moving requirements, number of rooms, special items, etc."
-                    rows={4}
-                    className="bg-gray-100"
-                  />
-                </div>
-                <Button className="w-full bg-gradient-primary hover:shadow-button group" size="lg" type="submit" disabled={sending}>
-                  <Send className="mr-2 h-4 w-4" />
-                  {sending ? "Sending..." : "Send Quote Request"}
-                </Button>
-                {sent && <div className="text-green-600 mt-2">Quote request sent successfully!</div>}
-                {error && <div className="text-red-600 mt-2">{error}</div>}
-              </form>
-            </motion.div>
-          </div>
         </div>
+
       </section>
 
       {/* Map Section */}

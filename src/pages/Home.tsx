@@ -120,10 +120,6 @@ const Home = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="text-primary h-5 w-5" />
-                  <span className="text-foreground">Licensed & Insured</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="text-primary h-5 w-5" />
                   <span className="text-foreground">24/7 Customer Support</span>
                 </div>
                 <div className="flex items-center space-x-3">

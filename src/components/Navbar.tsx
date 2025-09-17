@@ -98,9 +98,15 @@ const Navbar = () => {
                 </div>
               ))}
               
-              <Button variant="default" className="bg-gradient-primary hover:shadow-button">
-                <Link to="/contact#quote-form">Get Quote</Link>
-              </Button>
+                <Button
+                asChild
+                variant="default"
+                className="bg-gradient-primary hover:shadow-button"
+                >
+                <Link to="/contact#quote-form" className="ml-6 w-20 h-full flex items-center justify-center">
+                  Get Quote
+                </Link>
+                </Button>
             </div>
 
             {/* Mobile Menu Button */}

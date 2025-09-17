@@ -94,14 +94,6 @@ const About = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="text-primary h-5 w-5" />
-                  <span className="text-foreground">ISO Certified Moving Company</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="text-primary h-5 w-5" />
-                  <span className="text-foreground">Licensed and Insured Operations</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="text-primary h-5 w-5" />
                   <span className="text-foreground">24/7 Customer Support</span>
                 </div>
                 <div className="flex items-center space-x-3">

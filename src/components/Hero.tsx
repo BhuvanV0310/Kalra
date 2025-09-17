@@ -48,10 +48,15 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <Button size="lg" className="bg-white text-primary hover:bg-primary-glow hover:text-white shadow-hero group">
-                <Link to="/contact#quote-form">Get Free Quote</Link>
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link to="/contact#quote-form" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  className="bg-white text-primary hover:bg-primary-glow hover:text-white shadow-hero group flex items-center justify-start w-full"
+                >
+                  Get Free Quote
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
 
               
             </motion.div>
@@ -110,7 +115,7 @@ const Hero = () => {
               <MapPinned className="h-5 w-5 text-white" />
               <span className="text-white font-semibold text-lg">4.9</span>
               <span className="text-yellow-400 text-base">★</span>
-              <span className="text-white font-bold text-md">Google Maps rating</span>
+              <span className="text-white font-bold text-md">4.9 rating given by clients</span>
             </div>
 
           </motion.div>
