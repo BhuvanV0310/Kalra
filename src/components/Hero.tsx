@@ -113,9 +113,10 @@ const Hero = () => {
             </form>
             <div className="flex items-center gap-2 mt-2">
               <MapPinned className="h-5 w-5 text-white" />
+              <span className="text-white font-bold text-md">Proud to be rated </span>
               <span className="text-white font-semibold text-lg">4.9</span>
               <span className="text-yellow-400 text-base">★</span>
-              <span className="text-white font-bold text-md">4.9 rating given by clients</span>
+              <span className="text-white font-bold text-md"> by our amazing customers</span>
             </div>
 
           </motion.div>

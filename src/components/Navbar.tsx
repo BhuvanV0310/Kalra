@@ -31,21 +31,22 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <>
+    <nav aria-label="Main navigation">
       {/* Top Bar */}
-      <div className="bg-white py-3 px-4 border-b border-blue-100">
-        <div className="container mx-auto flex justify-between items-center text-base">
-
-          <div className="flex-1 flex justify-center">
+      <div className="bg-white py-2 px-2 sm:px-4 border-b border-blue-100">
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-base">
+          {/* Social Links - hidden on mobile */}
+          <div className="hidden md:flex flex-1 justify-center">
             <div className="flex items-center space-x-4 ml-20">
-              <a href="https://www.facebook.com/KalraPackers/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/KalraPackers/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <Facebook size={18} className="text-blue-700 hover:text-primary-glow cursor-pointer" />
               </a>
-              <a href="https://www.instagram.com/kalrapackersmovers?igsh=MTFlNXhocHdheHYyZg==" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/kalrapackersmovers?igsh=MTFlNXhocHdheHYyZg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <Instagram size={18} className="text-blue-700 hover:text-primary-glow cursor-pointer" />
               </a>
             </div>
           </div>
+          {/* Contact Info */}
           <div className="flex items-center space-x-1">
             <Phone size={16} className="text-blue-700" />
             <span className="text-blue-700 font-semibold text-base">+91-7292010102</span>
@@ -54,11 +55,11 @@ const Navbar = () => {
       </div>
 
       {/* Main Navigation */}
-  <nav className="bg-yellow-200 shadow-lg sticky top-0 z-50">
-        <div className="container mx-auto px-2">
+      <header className="bg-yellow-200 shadow-lg sticky top-0 z-50 w-full">
+        <div className="max-w-7xl mx-auto px-2">
           <div className="flex justify-between items-center py-1">
             {/* Logo */}
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center" aria-label="Home">
               <span className="bg-white rounded-lg px-3 py-1 shadow border border-blue-900 flex flex-col items-center font-extrabold text-blue-900 tracking-widest whitespace-nowrap drop-shadow mr-8" style={{ letterSpacing: '0.12em', fontFamily: 'serif', minWidth: '180px' }}>
                 <span className="font-extrabold text-base tracking-widest text-blue-900" style={{ letterSpacing: '0.12em', fontFamily: 'serif' }}>KALRA Packers Movers</span>
                 <span className="font-bold text-[0.7rem] tracking-widest mt-0.5 px-2 py-0.5 rounded" style={{ background: '#0a2e73', color: '#fff', letterSpacing: '0.25em', boxShadow: '0 1px 4px rgba(10,46,115,0.10)' }}>SINCE 1992</span>
@@ -66,7 +67,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
+            <nav className="hidden lg:flex items-center space-x-1" aria-label="Primary">
               {navItems.map((item) => (
                 <div key={item.name} className="relative group">
                   <Link
@@ -78,10 +79,9 @@ const Navbar = () => {
                   >
                     {item.name}
                   </Link>
-                  
                   {/* Submenu */}
                   {item.submenu && (
-                    <div className="absolute top-full left-0 mt-2 w-64 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                    <div className="absolute top-full left-0 mt-2 w-64 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                       <div className="py-2">
                         {item.submenu.map((subItem) => (
                           <Link
@@ -97,22 +97,22 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              
-                <Button
+              <Button
                 asChild
                 variant="default"
                 className="bg-gradient-primary hover:shadow-button"
-                >
+              >
                 <Link to="/contact#quote-form" className="ml-6 w-20 h-full flex items-center justify-center">
                   Get Quote
                 </Link>
-                </Button>
-            </div>
+              </Button>
+            </nav>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -126,8 +126,10 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-white border-t"
+            aria-modal="true"
+            role="dialog"
           >
-            <div className="container mx-auto px-4 py-4 space-y-4">
+            <div className="max-w-7xl mx-auto px-4 py-4 space-y-4">
               {navItems.map((item) => (
                 <div key={item.name}>
                   <Link
@@ -162,8 +164,8 @@ const Navbar = () => {
             </div>
           </motion.div>
         )}
-      </nav>
-    </>
+      </header>
+    </nav>
   );
 };
 
