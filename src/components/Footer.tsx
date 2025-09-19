@@ -128,10 +128,6 @@ const Footer = () => {
                 <p className="text-muted">support@kalrapackersmovers.in</p>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail size={18} className="text-primary-glow flex-shrink-0" />
-                <p className="text-muted">offers@kalrapackersmovers.in</p>
-              </div>
-              <div className="flex items-center space-x-3">
                 <Clock size={18} className="text-primary-glow flex-shrink-0" />
                 <p className="text-muted">24/7 Customer Support</p>
               </div>

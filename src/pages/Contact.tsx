@@ -39,7 +39,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      details: ["offers@kalrapackersmovers.com", "support@kalrapackersandmovers.com"],
+      details: ["offers@kalrapackersmovers.in", "support@kalrapackersandmovers.in"],
       color: "from-orange-500 to-orange-600"
     },
     {
