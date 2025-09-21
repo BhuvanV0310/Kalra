@@ -128,7 +128,7 @@ const BlogPost = () => {
         </div>
       </section>
       <div className="container mx-auto px-4 pb-20">
-        <Card className="max-w-3xl mx-auto shadow-card">
+        <Card className="max-w-3xl mx-auto bg-gradient-section shadow-card">
           <CardContent className="p-8">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
               <div className="prose prose-lg max-w-none text-foreground mb-8 whitespace-pre-line">

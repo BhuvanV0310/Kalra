@@ -75,12 +75,6 @@ const Services = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Request Call Back Button */}
-      <section className="w-full flex justify-center py-8 bg-yellow-200">
-        <Button asChild className="bg-primary-glow text-white font-semibold px-6 py-3 rounded-lg shadow-lg">
-          <Link to="/contact#quote-form">Request Call Back</Link>
-        </Button>
-      </section>
       {/* Hero Section */}
       <section className="bg-gradient-hero text-white py-20">
         <div className="container mx-auto px-4 text-center">
@@ -95,7 +89,7 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-  <section className="py-20 bg-yellow-200">
+  <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
@@ -105,7 +99,7 @@ const Services = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-card transition-all duration-300 group overflow-hidden">
+                <Card className="h-full bg-gradient-section hover:shadow-card transition-all duration-300 group overflow-hidden">
                   <CardContent className="p-0">
                     {/* Header with gradient */}
                     <div className={`bg-gradient-to-r ${service.color} p-6 text-white`}>
@@ -193,13 +187,13 @@ const Services = () => {
               Every move is unique. Contact us to discuss your specific requirements and get a personalized quote.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-yellow-200 text-primary hover:bg-primary-glow hover:text-yellow-400 shadow-hero group">
+              <Button asChild size="lg" className="bg-yellow-200 text-primary hover:bg-primary-glow hover:text-white shadow-hero group">
                 <Link to="/contact">
                   Get Custom Quote
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button asChild size="lg" className="bg-yellow-400 text-primary hover:bg-primary-glow hover:text-yellow-400 shadow-hero">
+              <Button asChild size="lg" className="bg-yellow-200 text-primary hover:bg-primary-glow hover:text-white shadow-hero">
                 <Link to="/about">Learn About Us</Link>
               </Button>
             </div>

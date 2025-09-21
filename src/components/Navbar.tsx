@@ -31,63 +31,63 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav aria-label="Main navigation">
+    <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50">
       {/* Top Bar */}
-      <div className="bg-white py-2 px-2 sm:px-4 border-b border-blue-100">
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-base">
+      <div className="bg-yellow-200 py-1.5 sm:py-2 px-2 sm:px-4 lg:px-6 border-b border-blue-100">
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-sm sm:text-base">
           {/* Social Links - hidden on mobile */}
           <div className="hidden md:flex flex-1 justify-center">
-            <div className="flex items-center space-x-4 ml-20">
+            <div className="flex items-center space-x-3 lg:space-x-4 ml-8 lg:ml-20">
               <a href="https://www.facebook.com/KalraPackers/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <Facebook size={18} className="text-blue-700 hover:text-primary-glow cursor-pointer" />
+                <Facebook size={16} className="text-blue-700 hover:text-primary-glow cursor-pointer transition-colors duration-200 sm:w-[18px] sm:h-[18px]" />
               </a>
               <a href="https://www.instagram.com/kalrapackersmovers?igsh=MTFlNXhocHdheHYyZg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <Instagram size={18} className="text-blue-700 hover:text-primary-glow cursor-pointer" />
+                <Instagram size={16} className="text-blue-700 hover:text-primary-glow cursor-pointer transition-colors duration-200 sm:w-[18px] sm:h-[18px]" />
               </a>
             </div>
           </div>
           {/* Contact Info */}
-          <div className="flex items-center space-x-1">
-            <Phone size={16} className="text-blue-700" />
-            <span className="text-blue-700 font-semibold text-base">+91-7292010102</span>
+          <div className="flex items-center space-x-1 sm:space-x-2">
+            <Phone size={14} className="text-blue-700 sm:w-4 sm:h-4 flex-shrink-0" />
+            <span className="text-blue-700 font-semibold text-xs sm:text-sm lg:text-base whitespace-nowrap">+91-7292010102</span>
           </div>
         </div>
       </div>
 
       {/* Main Navigation */}
-      <header className="bg-yellow-200 shadow-lg sticky top-0 z-50 w-full">
-        <div className="max-w-7xl mx-auto px-2">
-          <div className="flex justify-between items-center py-1">
+      <header className="bg-white shadow-lg w-full">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+          <div className="flex justify-between items-center py-1 sm:py-2">
             {/* Logo */}
             <Link to="/" className="flex items-center" aria-label="Home">
-              <span className="bg-white rounded-lg px-3 py-1 shadow border border-blue-900 flex flex-col items-center font-extrabold text-blue-900 tracking-widest whitespace-nowrap drop-shadow mr-8" style={{ letterSpacing: '0.12em', fontFamily: 'serif', minWidth: '180px' }}>
-                <span className="font-extrabold text-base tracking-widest text-blue-900" style={{ letterSpacing: '0.12em', fontFamily: 'serif' }}>KALRA Packers Movers</span>
-                <span className="font-bold text-[0.7rem] tracking-widest mt-0.5 px-2 py-0.5 rounded" style={{ background: '#0a2e73', color: '#fff', letterSpacing: '0.25em', boxShadow: '0 1px 4px rgba(10,46,115,0.10)' }}>SINCE 1992</span>
+              <span className="bg-yellow-200 rounded-lg px-2 sm:px-3 py-1 sm:py-1.5 shadow border border-blue-900 flex flex-col items-center font-extrabold text-blue-900 tracking-widest whitespace-nowrap drop-shadow mr-2 sm:mr-4 lg:mr-8" style={{ letterSpacing: '0.12em', fontFamily: 'serif', minWidth: '140px' }}>
+                <span className="font-extrabold text-xs sm:text-sm lg:text-base tracking-widest text-blue-900" style={{ letterSpacing: '0.08em', fontFamily: 'serif' }}>KALRA Packers Movers</span>
+                <span className="font-bold text-[0.5rem] sm:text-[0.6rem] lg:text-[0.7rem] tracking-widest mt-0.5 px-1 sm:px-2 py-0.5 rounded" style={{ background: '#0a2e73', color: '#fff', letterSpacing: '0.2em', boxShadow: '0 1px 4px rgba(10,46,115,0.10)' }}>SINCE 1992</span>
               </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1" aria-label="Primary">
+            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" aria-label="Primary">
               {navItems.map((item) => (
                 <div key={item.name} className="relative group">
                   <Link
                     to={item.path}
                     className={cn(
-                      "font-bold text-sm px-2 py-1 rounded-xl transition-colors hover:text-primary hover:bg-yellow-50",
-                      isActive(item.path) ? "text-primary bg-yellow-100" : "text-foreground"
+                      "font-bold text-sm xl:text-base px-2 xl:px-3 py-2 rounded-xl transition-all duration-200 hover:text-primary hover:bg-white hover:shadow-sm",
+                      isActive(item.path) ? "text-primary bg-white shadow-sm" : "text-foreground"
                     )}
                   >
                     {item.name}
                   </Link>
                   {/* Submenu */}
                   {item.submenu && (
-                    <div className="absolute top-full left-0 mt-2 w-64 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                    <div className="absolute top-full left-0 mt-2 w-64 xl:w-72 bg-yellow-200 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10 border border-blue-100">
                       <div className="py-2">
                         {item.submenu.map((subItem) => (
                           <Link
                             key={subItem.name}
                             to={subItem.path}
-                            className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                            className="block px-4 py-2.5 text-sm xl:text-base text-foreground hover:bg-white hover:text-primary transition-all duration-200 hover:shadow-sm rounded-md mx-2"
                           >
                             {subItem.name}
                           </Link>
@@ -100,9 +100,9 @@ const Navbar = () => {
               <Button
                 asChild
                 variant="default"
-                className="bg-gradient-primary hover:shadow-button"
+                className="bg-yellow-200 text-blue-600 hover:text-yellow-200 hover:shadow-button transition-all duration-200 ml-4 xl:ml-6"
               >
-                <Link to="/contact#quote-form" className="ml-6 w-20 h-full flex items-center justify-center">
+                <Link to="/contact#quote-form" className="w-20 xl:w-24 h-full flex items-center justify-center text-sm xl:text-base font-semibold">
                   Get Quote
                 </Link>
               </Button>
@@ -111,10 +111,10 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2"
+              className="lg:hidden p-2 sm:p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 touch-manipulation"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} className="sm:w-6 sm:h-6" /> : <Menu size={20} className="sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
@@ -125,30 +125,30 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t"
+            className="lg:hidden bg-yellow-200 border-t border-blue-100 shadow-lg"
             aria-modal="true"
             role="dialog"
           >
-            <div className="max-w-7xl mx-auto px-4 py-4 space-y-4">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4">
               {navItems.map((item) => (
                 <div key={item.name}>
                   <Link
                     to={item.path}
                     className={cn(
-                      "block py-2 font-medium transition-colors",
-                      isActive(item.path) ? "text-primary" : "text-foreground"
+                      "block py-2.5 sm:py-3 font-medium transition-colors duration-200 text-base sm:text-lg touch-manipulation",
+                      isActive(item.path) ? "text-primary font-bold" : "text-foreground hover:text-primary"
                     )}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
                   </Link>
                   {item.submenu && (
-                    <div className="ml-4 mt-2 space-y-2">
+                    <div className="ml-4 sm:ml-6 mt-2 space-y-2">
                       {item.submenu.map((subItem) => (
                         <Link
                           key={subItem.name}
                           to={subItem.path}
-                          className="block py-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+                          className="block py-2 text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation"
                           onClick={() => setIsOpen(false)}
                         >
                           {subItem.name}
@@ -158,9 +158,25 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <Button className="w-full bg-gradient-primary">
-                <Link to="/contact#quote-form">Get Quote</Link>
-              </Button>
+              <div className="pt-2 sm:pt-4">
+                <Button className="w-full bg-gradient-primary hover:shadow-button py-3 sm:py-4 text-base sm:text-lg font-semibold touch-manipulation">
+                  <Link to="/contact#quote-form" onClick={() => setIsOpen(false)}>Get Quote</Link>
+                </Button>
+              </div>
+              
+              {/* Mobile Social Links */}
+              <div className="flex justify-center items-center space-x-6 pt-4 sm:pt-6 border-t border-blue-100 mt-4">
+                <a href="https://www.facebook.com/KalraPackers/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="touch-manipulation">
+                  <Facebook size={24} className="text-blue-700 hover:text-primary-glow transition-colors duration-200" />
+                </a>
+                <a href="https://www.instagram.com/kalrapackersmovers?igsh=MTFlNXhocHdheHYyZg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="touch-manipulation">
+                  <Instagram size={24} className="text-blue-700 hover:text-primary-glow transition-colors duration-200" />
+                </a>
+                <div className="flex items-center space-x-2">
+                  <Phone size={20} className="text-blue-700" />
+                  <span className="text-blue-700 font-semibold text-base">+91-7292010102</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         )}

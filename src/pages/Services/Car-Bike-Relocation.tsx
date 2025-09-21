@@ -58,7 +58,7 @@ const CarBikeRelocation = () => {
             <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed mb-8">
               {description}
             </p>
-            <Button asChild size="lg" className="bg-yellow-200 text-primary hover:bg-primary-glow hover:text-yellow-400 shadow-hero">
+            <Button asChild size="lg" className="bg-yellow-200 text-primary hover:bg-primary-glow hover:text-white shadow-hero">
               <Link to="/contact#quote-form">Get Relocation Quote</Link>
             </Button>
           </motion.div>
@@ -66,7 +66,7 @@ const CarBikeRelocation = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-yellow-200">
+      <section className="py-20 ">
         <div className="container mx-auto px-4">
           <motion.div {...fadeInUp} className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 text-foreground">Why Choose Our Car Bike Relocation?</h2>
@@ -82,7 +82,7 @@ const CarBikeRelocation = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <Card className="h-full hover:shadow-card transition-all duration-300">
+                <Card className="h-full bg-gradient-section hover:shadow-card transition-all duration-300">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                       <CheckCircle className="h-8 w-8 text-white" />
@@ -105,13 +105,13 @@ const CarBikeRelocation = () => {
               Get a free quote for safe and reliable car or bike relocation services with full insurance coverage.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-yellow-400 text-primary hover:bg-primary-glow hover:text-yellow-400 shadow-hero group">
+              <Button asChild size="lg" className="bg-yellow-200 text-primary hover:bg-primary-glow hover:text-white shadow-hero group">
                 <Link to="/contact#quote-form">
                   Get Relocation Quote
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button asChild size="lg" className="bg-yellow-400 text-primary hover:bg-primary-glow hover:text-yellow-400 shadow-hero">
+              <Button asChild size="lg" className="bg-yellow-200 text-primary hover:bg-primary-glow hover:text-white shadow-hero">
                 <Link to="/services">View All Services</Link>
               </Button>
             </div>

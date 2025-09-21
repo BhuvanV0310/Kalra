@@ -8,17 +8,17 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-  --background: 48 96% 53%; /* yellow */
+  --background: 0 0% 100%; /* white */
     --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%;
+    --card: 48 96% 53%;
     --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 0 0% 100%;
+    --popover: 48 96% 53%;
     --popover-foreground: 222.2 84% 4.9%;
 
     --primary: 208 100% 47%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 48 96% 53%;
     --primary-glow: 208 100% 57%;
 
     --secondary: 210 40% 96.1%;
@@ -28,12 +28,12 @@ All colors MUST be HSL.
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 208 100% 47%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 48 96% 53%;
 
     /* Professional blue gradients */
     --gradient-primary: linear-gradient(135deg, hsl(208 100% 47%), hsl(208 100% 57%));
     --gradient-hero: linear-gradient(135deg, hsl(208 100% 47%), hsl(220 91% 59%));
-    --gradient-section: linear-gradient(180deg, hsl(210 40% 98%), hsl(0 0% 100%));
+    --gradient-section: linear-gradient(180deg, hsl(40, 33%, 98%), hsl(54 100% 70%)); /* yellow-200 gradient */
 
     /* Professional shadows */
     --shadow-card: 0 4px 12px hsl(208 100% 47% / 0.1);
@@ -59,15 +59,11 @@ All colors MUST be HSL.
 
     --sidebar-primary: 240 5.9% 10%;
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-primary-foreground: 48 96% 53%;
 
     --sidebar-accent: 240 4.8% 95.9%;
 
     --sidebar-accent-foreground: 240 5.9% 10%;
-
-      --card-foreground: 222.2 84% 4.9%; /* dark blue for contrast */
-      --popover: 48 96% 53%; /* yellow */
-      --popover-foreground: 222.2 84% 4.9%; /* dark blue for contrast */
   }
 
   .dark {
@@ -85,7 +81,7 @@ All colors MUST be HSL.
     --primary-glow: 208 100% 67%;
 
     --secondary: 217.2 32.6% 17.5%;
-      --gradient-section: linear-gradient(180deg, hsl(48 96% 53%), hsl(48 96% 43%)); /* yellow gradient */
+      --gradient-section: linear-gradient(180deg, hsl(60, 5%, 96%), hsl(54 100% 70%)); /* yellow-200 gradient */
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
@@ -107,7 +103,7 @@ All colors MUST be HSL.
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary-foreground: 48 96% 53%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
