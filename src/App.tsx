@@ -4,27 +4,22 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes";
+import PerformanceMonitor from "./components/PerformanceMonitor";
 
-const queryClient = new QueryClient();
-
-import React, { useState, useEffect } from "react";
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes
+    },
+  },
+});
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
-    return () => clearTimeout(timer);
-  }, []);
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-primary-glow to-white">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary-glow"></div>
-      </div>
-    );
-  }
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <PerformanceMonitor />
         <Toaster />
         <Sonner />
         <BrowserRouter>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Hero from "@/components/Hero";
-import Slider from "react-slick";
+import SimpleGallery from "@/components/SimpleGallery";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Button } from "@/components/ui/button";
@@ -202,77 +202,11 @@ const Home = () => {
       </section>
 
       {/* Our Gallery Section */}
-    <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8">Our Gallery</h2>
-          <div className="max-w-xs sm:max-w-lg lg:max-w-2xl mx-auto">
-            <Slider autoplay autoplaySpeed={4000} dots infinite slidesToShow={1} slidesToScroll={1} arrows={false}>
-              <div className="flex justify-center items-center h-48 sm:h-64 lg:h-96 px-2">
-                <img 
-                  src="/assets/LOGO.png" 
-                  alt="Kalra Packers & Movers Logo" 
-                  className="object-contain h-full w-full rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer" 
-                />
-              </div>
-              {galleryImages.map((img, idx) => (
-                <div key={idx} className="flex justify-center items-center h-48 sm:h-64 lg:h-96 px-2">
-                  <img 
-                    src={img} 
-                    alt={`Gallery ${idx + 1}`} 
-                    className="object-contain h-full w-full rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer" 
-                  />
-                </div>
-              ))}
-            </Slider>
-          </div>
-        </div>
-      </section>
-      {/* Testimonials Section */}
-    <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-foreground">What Our Customers Say</h2>
-            <p className="text-base sm:text-lg text-muted-foreground px-4">
-              Don't just take our word for it - hear from our satisfied customers
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                <Card className="bg-gradient-section hover:shadow-card transition-all duration-300 h-full">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center mb-3 sm:mb-4 gap-3">
-                      <img 
-                        src={`https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=F3F4F6&color=111827&size=64`} 
-                        alt={testimonial.name} 
-                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-primary shadow flex-shrink-0" 
-                      />
-                      <div className="flex flex-1 justify-between items-center">
-                        <div className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</div>
-                        <div className="flex">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-200 fill-current" />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                      "{testimonial.comment}"
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <SimpleGallery 
+        googlePhotosUrl="https://photos.app.goo.gl/bPLaJ2huuHdEYqEi7"
+        staticImages={galleryImages}
+        className=""
+      />
       {/* CTA Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-hero text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

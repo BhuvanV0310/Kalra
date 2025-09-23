@@ -1,18 +1,196 @@
-  <!-- Removed Lovable icon and branding -->
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
-  <meta charset="UTF-8" />
-  <!-- Google Fonts: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kalra Packers & Movers - Professional Moving Services</title>
-    <meta name="description" content="Professional packers and movers providing door-to-door relocation services. Residential, commercial, office relocation, vehicle transport, and more." />
-    <meta name="author" content="Kalra Packers & Movers" />
-
-    <meta property="og:title" content="Kalra Packers & Movers - Professional Moving Services" />
-    <meta property="og:description" content="Professional packers and movers providing door-to-door relocation services. Residential, commercial, office relocation, vehicle transport, and more." />
-    <meta property="og:type" content="website" />
+    
+    <!-- DNS Prefetch and Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    
+    <!-- Critical CSS - Google Fonts: Inter -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/assets/LOGO.png" as="image" type="image/png">
+    <link rel="preload" href="/assets/hero-moving.jpg" as="image" type="image/jpeg">
+    <link rel="preload" href="/src/main.tsx" as="script">
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/LOGO.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/LOGO.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/LOGO.png">
+    
+    <!-- Primary Meta Tags -->
+    <title>Kalra Packers & Movers - Professional Moving Services | Trusted Relocation Experts</title>
+    <meta name="title" content="Kalra Packers & Movers - Professional Moving Services | Trusted Relocation Experts">
+    <meta name="description" content="Professional packers and movers in Delhi providing door-to-door relocation services. Home shifting, office relocation, car transport, and storage solutions. 4.9★ rated with 10K+ happy customers. Get free quote today!">
+    <meta name="keywords" content="packers and movers, moving services, relocation services, house shifting, office relocation, car transport, home shifting services, professional movers, Delhi packers movers, Dwarka movers, best moving company, storage services, packing services">
+    <meta name="author" content="Kalra Packers & Movers">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="General">
+    
+    <!-- Geographic Meta Tags -->
+    <meta name="geo.region" content="IN-DL">
+    <meta name="geo.placename" content="New Delhi, India">
+    <meta name="geo.position" content="28.6139;77.2090">
+    <meta name="ICBM" content="28.6139, 77.2090">
+    
+    <!-- Business Information -->
+    <meta name="contact" content="support@kalrapackersmovers.in">
+    <meta name="phone" content="+91-7292010102">
+    <meta name="address" content="474, Plot, Block-C, Sector 6 Dwarka, New Delhi, Delhi, 110075">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kalrapackersmovers.com/">
+    <meta property="og:title" content="Kalra Packers & Movers - Professional Moving Services | Trusted Relocation Experts">
+    <meta property="og:description" content="Professional packers and movers in Delhi providing door-to-door relocation services. 4.9★ rated with 10K+ happy customers. Get free quote today!">
+    <meta property="og:image" content="https://kalrapackersmovers.com/assets/LOGO.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Kalra Packers & Movers Logo">
+    <meta property="og:site_name" content="Kalra Packers & Movers">
+    <meta property="og:locale" content="en_IN">
+    <meta property="business:contact_data:street_address" content="474, Plot, Block-C, Sector 6 Dwarka">
+    <meta property="business:contact_data:locality" content="New Delhi">
+    <meta property="business:contact_data:region" content="Delhi">
+    <meta property="business:contact_data:postal_code" content="110075">
+    <meta property="business:contact_data:country_name" content="India">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kalrapackersmovers.com/">
+    <meta property="twitter:title" content="Kalra Packers & Movers - Professional Moving Services">
+    <meta property="twitter:description" content="Professional packers and movers in Delhi. 4.9★ rated with 10K+ happy customers. Get free quote today!">
+    <meta property="twitter:image" content="https://kalrapackersmovers.com/assets/LOGO.png">
+    <meta property="twitter:image:alt" content="Kalra Packers & Movers Logo">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kalrapackersmovers.com/">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MovingCompany",
+      "name": "Kalra Packers & Movers",
+      "alternateName": "Kalra Packers and Movers",
+      "url": "https://kalrapackersmovers.com",
+      "logo": "https://kalrapackersmovers.com/assets/LOGO.png",
+      "image": "https://kalrapackersmovers.com/assets/LOGO.png",
+      "description": "Professional packers and movers providing door-to-door relocation services including home shifting, office relocation, car transport, and storage solutions.",
+      "telephone": "+91-7292010102",
+      "email": "support@kalrapackersmovers.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "474, Plot, Block-C, Sector 6 Dwarka",
+        "addressLocality": "New Delhi",
+        "addressRegion": "Delhi",
+        "postalCode": "110075",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "28.6139",
+        "longitude": "77.2090"
+      },
+      "areaServed": [
+        {
+          "@type": "State",
+          "name": "Delhi"
+        },
+        {
+          "@type": "Country",
+          "name": "India"
+        }
+      ],
+      "serviceType": "Moving Services",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Moving Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Home Relocation",
+              "description": "Professional residential moving services"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Office Relocation",
+              "description": "Commercial and office moving services"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Car & Bike Transportation",
+              "description": "Vehicle transportation services"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "2847",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Priya Sharma"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Excellent service! The team was professional and handled our furniture with great care. Highly recommended!"
+        }
+      ],
+      "openingHours": "Mo-Su 00:00-23:59",
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+      "currenciesAccepted": "INR",
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.facebook.com/KalraPackers/",
+        "https://www.instagram.com/kalrapackersmovers"
+      ]
+    }
+    </script>
+    
+    <!-- Performance and Optimization -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#3B82F6">
+    <meta name="msapplication-TileColor" content="#3B82F6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Kalra Packers">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Resource Hints for Better Performance -->
+    <link rel="prefetch" href="/assets/office-relocation.jpg">
+    <link rel="prefetch" href="/assets/residential-moving.jpg">
   </head>
 
   <body>

@@ -12,20 +12,20 @@ const FloatingCallButton = () => {
     >
       <Link
         to="/contact#quote-form"
-        className="group flex items-center justify-center w-14 h-14 bg-yellow-200 hover:bg-yellow-300 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+        className="group flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
         aria-label="Contact us"
       >
         <Phone 
           size={24} 
-          className="group-hover:animate-pulse text-blue-900"
+          className="group-hover:animate-pulse text-white"
         />
         
         {/* Ripple effect */}
-        <div className="absolute inset-0 rounded-full bg-yellow-200 opacity-75 animate-ping"></div>
+        <div className="absolute inset-0 rounded-full bg-green-400 opacity-75 animate-ping"></div>
         
         {/* Tooltip */}
         <div className="absolute right-16 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-          Contact Us
+          Request Call Back
           <div className="absolute top-1/2 right-0 transform translate-x-full -translate-y-1/2 border-4 border-transparent border-l-gray-800"></div>
         </div>
       </Link>
