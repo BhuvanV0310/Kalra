@@ -39,8 +39,9 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      details: ["offers@kalrapackersmovers.in", "support@kalrapackersandmovers.in"],
-      color: "from-orange-500 to-orange-600"
+      details: ["offers@kalrapackersmovers.in","support@kalrapackersmovers.in"],
+      color: "from-orange-500 to-orange-600",
+      classname: "text-sm sm:text-base"
     },
     {
       icon: MapPin,
@@ -146,9 +147,6 @@ const Contact = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-black">
-                    Additional Details
-                  </label>
                   <Textarea 
                     name="additional_details"
                     placeholder="Tell us about your moving requirements, number of rooms, special items, etc."
@@ -156,7 +154,7 @@ const Contact = () => {
                     className="bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary resize-none text-base"
                   />
                 </div>
-                <Button className="w-full bg-gradient-primary hover:shadow-button group py-3 sm:py-4 text-base sm:text-lg font-semibold touch-manipulation" size="lg" type="submit" disabled={sending}>
+                <Button className="w-full bg-yellow-200 text-blue-600 hover:shadow-button group py-3 sm:py-4 text-base sm:text-lg font-semibold touch-manipulation" size="lg" type="submit" disabled={sending}>
                   <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   {sending ? "Sending..." : "Send Quote Request"}
                 </Button>
