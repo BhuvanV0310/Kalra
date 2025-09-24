@@ -83,19 +83,14 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Center - Google Reviews */}
+            {/* Center - Google Reviews (Always Visible) */}
             <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="flex flex-col justify-center order-2 md:order-3 lg:order-2 mb-6 md:mb-0"
             >
-            {/* Google Reviews Button */}
-            <button
-              type="button"
-              className="bg-blue-300/50 backdrop-blur-md rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5 shadow-xl border border-blue-300/30 backdrop-saturate-150 max-h-[400px] sm:max-h-[450px] md:max-h-[500px] overflow-hidden hover:ring-2 hover:ring-yellow-200 transition-all duration-300 flex flex-col items-center hover:scale-105 active:scale-95 touch-manipulation"
-              onClick={() => setShowReviews(true)}
-            >
+            <div className="bg-blue-300/50 backdrop-blur-md rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5 shadow-xl border border-blue-300/30 backdrop-saturate-150 max-h-[400px] sm:max-h-[450px] md:max-h-[500px] overflow-hidden flex flex-col items-center">
               <div className="text-center mb-3 sm:mb-4">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <img 
@@ -113,126 +108,94 @@ const Hero = () => {
               </div>
               <p className="text-red-100 text-xs sm:text-sm">Based on 100+ reviews</p>
               </div>
-            </button>
-
-            {/* Modal for Reviews */}
-            {showReviews && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-              <div className="bg-blue-300/50 backdrop-blur-md rounded-xl p-4 sm:p-6 shadow-2xl border border-blue-300/30 max-w-sm sm:max-w-md md:max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
-                <button
-                type="button"
-                className="absolute top-2 right-2 sm:top-3 sm:right-3 text-white bg-blue-600 rounded-full p-1.5 sm:p-2 hover:bg-blue-800 transition-colors z-10 touch-manipulation"
-                onClick={() => setShowReviews(false)}
-                >
-                <span className="text-sm sm:text-base">✕</span>
-                </button>
-                <div className="text-center mb-3 sm:mb-4 pr-8">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
-                  alt="Google" 
-                  className="w-5 h-5 sm:w-6 sm:h-6"
-                  />
-                  <span className="text-black font-semibold text-sm sm:text-base">Google Reviews</span>
+              <div className="space-y-2 sm:space-y-3 max-h-[60vh] overflow-y-auto w-full">
+              {/* Review 1 - Gaurav Semwal */}
+              <motion.div 
+                className="bg-blue-600/50 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-semibold text-xs sm:text-sm">G</span>
                 </div>
-                <div className="flex items-center justify-center gap-1 mb-1">
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-medium text-xs sm:text-sm truncate">Gaurav Semwal</p>
+                  <p className="text-blue-200 text-xs">Local Guide • 1 month ago</p>
+                  <div className="flex items-center gap-1">
                   {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-yellow-400" />
                   ))}
-                  <span className="text-white font-bold ml-2 text-base sm:text-lg">4.9</span>
+                  </div>
                 </div>
-                <p className="text-red-100 text-xs sm:text-sm">Based on 100+ reviews</p>
                 </div>
-                <div className="space-y-2 sm:space-y-3 max-h-[60vh] overflow-y-auto">
-                {/* Review 1 - Gaurav Semwal */}
-                <motion.div 
-                  className="bg-blue-600/50 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
-                >
-                  <div className="flex items-center gap-2 mb-1 sm:mb-2">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-semibold text-xs sm:text-sm">G</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-white font-medium text-xs sm:text-sm truncate">Gaurav Semwal</p>
-                    <p className="text-blue-200 text-xs">Local Guide • 1 month ago</p>
-                    <div className="flex items-center gap-1">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-yellow-400" />
-                    ))}
-                    </div>
-                  </div>
-                  </div>
-                  <p className="text-red-50 text-xs sm:text-sm leading-relaxed">
-                  "Amazing professionals in shifting. Mr AK Kalra ensures smooth moving. A must try for peace of mind while shifting homes."
-                  </p>
-                </motion.div>
+                <p className="text-red-50 text-xs sm:text-sm leading-relaxed">
+                "Amazing professionals in shifting. Mr AK Kalra ensures smooth moving. A must try for peace of mind while shifting homes."
+                </p>
+              </motion.div>
 
-                {/* Review 2 - Swasti Bardhan */}
-                <motion.div 
-                  className="bg-blue-600/50 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.0, duration: 0.6 }}
-                >
-                  <div className="flex items-center gap-2 mb-1 sm:mb-2">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-semibold text-xs sm:text-sm">S</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-white font-medium text-xs sm:text-sm truncate">Swasti Bardhan</p>
-                    <p className="text-blue-200 text-xs">2 months ago</p>
-                    <div className="flex items-center gap-1">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-yellow-400" />
-                    ))}
-                    </div>
-                  </div>
-                  </div>
-                  <p className="text-red-50 text-xs sm:text-sm leading-relaxed">
-                  "Fantastic experience with Kalra M&P. Very supportive staff. All items relocated safely without any damage."
-                  </p>
-                </motion.div>
-
-                {/* Review 3 - Mayank Singhal */}
-                <motion.div 
-                  className="bg-blue-600/50 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2, duration: 0.6 }}
-                >
-                  <div className="flex items-center gap-2 mb-1 sm:mb-2">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-semibold text-xs sm:text-sm">M</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-white font-medium text-xs sm:text-sm truncate">Mayank Singhal</p>
-                    <p className="text-blue-200 text-xs">Local Guide • 6 months ago</p>
-                    <div className="flex items-center gap-1">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-yellow-400" />
-                    ))}
-                    </div>
-                  </div>
-                  </div>
-                  <p className="text-red-50 text-xs sm:text-sm leading-relaxed">
-                  "Mr Kalra ensures customer delight. Delhi to Lucknow delivery was timely with all safety measures. Highly recommended!"
-                  </p>
-                </motion.div>
+              {/* Review 2 - Swasti Bardhan */}
+              <motion.div 
+                className="bg-blue-600/50 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.0, duration: 0.6 }}
+              >
+                <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-semibold text-xs sm:text-sm">S</span>
                 </div>
-                <a
-                href="https://www.google.com/search?q=kalra+packers+movers&client"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block mt-4 text-blue-900 underline text-sm sm:text-base text-center hover:text-blue-700 transition-colors touch-manipulation"
-                >
-                See all Google reviews
-                </a>
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-medium text-xs sm:text-sm truncate">Swasti Bardhan</p>
+                  <p className="text-blue-200 text-xs">2 months ago</p>
+                  <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-yellow-400" />
+                  ))}
+                  </div>
+                </div>
+                </div>
+                <p className="text-red-50 text-xs sm:text-sm leading-relaxed">
+                "Fantastic experience with Kalra M&P. Very supportive staff. All items relocated safely without any damage."
+                </p>
+              </motion.div>
+
+              {/* Review 3 - Mayank Singhal */}
+              <motion.div 
+                className="bg-blue-600/50 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.6 }}
+              >
+                <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-semibold text-xs sm:text-sm">M</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-medium text-xs sm:text-sm truncate">Mayank Singhal</p>
+                  <p className="text-blue-200 text-xs">Local Guide • 6 months ago</p>
+                  <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-yellow-400" />
+                  ))}
+                  </div>
+                </div>
+                </div>
+                <p className="text-red-50 text-xs sm:text-sm leading-relaxed">
+                "Mr Kalra ensures customer delight. Delhi to Lucknow delivery was timely with all safety measures. Highly recommended!"
+                </p>
+              </motion.div>
               </div>
-              </div>
-            )}
+              <a
+              href="https://www.google.com/search?q=kalra+packers+movers&client"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-4 text-blue-900 underline text-sm sm:text-base text-center hover:text-blue-700 transition-colors touch-manipulation"
+              >
+              See all Google reviews
+              </a>
+            </div>
             </motion.div>
 
           {/* Right - Contact Form */}

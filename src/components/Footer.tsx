@@ -56,7 +56,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-4 sm:translate-x-0 md:translate-x-5">
             <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
             <ul className="space-y-1.5">
               <li>
@@ -88,7 +88,7 @@ const Footer = () => {
           </div>
 
             {/* Services */}
-            <div className="space-y-4">
+            <div className="space-y-4 sm:translate-x-0 md:-translate-x-5">
               <h3 className="text-lg font-semibold mb-3">Our Services</h3>
               <ul className="space-y-1.5">
               <li>

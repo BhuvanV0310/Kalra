@@ -18,12 +18,12 @@ import {
 const Services = () => {
   const services = [
     {
-      icon: HomeIcon,
-      title: "Home Relocation",
-      description: "Safe and efficient shifting of your household goods, furniture, and appliances to your new home, anywhere in India.",
-      features: ["Door-to-door service", "Expert packing & handling", "Timely delivery", "Unpacking & setup assistance"],
-  link: "/services/Home-Relocation",
-      color: "from-blue-500 to-blue-600"
+      icon: Car,
+      title: "Car Bike Relocation",
+      description: "Specialized carriers for safe transportation of cars and bikes, with insurance and real-time tracking.",
+      features: ["All India delivery", "Insurance coverage", "Door-to-door pickup", "Real-time tracking"],
+  link: "/services/Car-Bike-Relocation",
+      color: "from-red-500 to-red-600"
     },
     {
       icon: Building,
@@ -33,13 +33,14 @@ const Services = () => {
   link: "/services/Office-Relocation",
       color: "from-orange-500 to-orange-600"
     },
+    
     {
-      icon: Car,
-      title: "Car Bike Relocation",
-      description: "Specialized carriers for safe transportation of cars and bikes, with insurance and real-time tracking.",
-      features: ["All India delivery", "Insurance coverage", "Door-to-door pickup", "Real-time tracking"],
-  link: "/services/Car-Bike-Relocation",
-      color: "from-red-500 to-red-600"
+      icon: HomeIcon,
+      title: "Home Relocation",
+      description: "Safe and efficient shifting of your household goods, furniture, and appliances to your new home, anywhere in India.",
+      features: ["Door-to-door service", "Expert packing & handling", "Timely delivery", "Unpacking & setup assistance"],
+  link: "/services/Home-Relocation",
+      color: "from-blue-500 to-blue-600"
     },
     {
       icon: Package,
