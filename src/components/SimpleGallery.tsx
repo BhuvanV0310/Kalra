@@ -313,7 +313,7 @@ const SimpleGallery: React.FC<SimpleGalleryProps> = ({
               variant="outline"
               size="sm"
               asChild
-              className="flex items-center gap-2 mx-auto"
+              className="flex items-center gap-2 mx-auto hover:to-blue-400 hover:text-white"
             >
               <a href={googlePhotosUrl} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-4 w-4" />
