@@ -142,6 +142,7 @@ const Blog = () => {
         id: blogPosts.length + 1,
         title: newPost.title,
         excerpt: newPost.content.slice(0, 100) + "...",
+        content: newPost.content,
         author: newPost.author,
         date: new Date().toLocaleDateString(),
         readTime: "3 min read",
@@ -164,13 +165,6 @@ const Blog = () => {
               Expert advice, tips, and insights to make your moving experience smooth and stress-free.
               Learn from the professionals who know moving best.
             </p>
-            <Button
-              className="mt-8 bg-white text-primary hover:bg-primary-glow hover:text-white shadow-hero"
-              onClick={() => setShowModal(true)}
-            >
-              <Plus className="mr-2 h-5 w-5" />
-              Add Blog Post
-            </Button>
           </motion.div>
         </div>
       </section>
@@ -213,7 +207,7 @@ const Blog = () => {
                       placeholder="Your email address"
                       className="w-full p-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     />
-                    <Button className="w-full bg-gradient-primary">
+                    <Button className="w-full bg-gradient-primary text-white">
                       Subscribe
                     </Button>
                   </div>

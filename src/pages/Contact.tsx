@@ -154,7 +154,7 @@ const Contact = () => {
                     className="bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary resize-none text-base"
                   />
                 </div>
-                <Button className="w-full bg-yellow-200 text-blue-600 hover:shadow-button group py-3 sm:py-4 text-base sm:text-lg font-semibold touch-manipulation" size="lg" type="submit" disabled={sending}>
+                <Button className="w-full bg-yellow-200 text-blue-600 hover:text-white hover:shadow-button group pt-0 py-3 sm:py-4 text-base sm:text-lg font-semibold touch-manipulation" size="lg" type="submit" disabled={sending}>
                   <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   {sending ? "Sending..." : "Send Quote Request"}
                 </Button>

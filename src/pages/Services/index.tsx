@@ -20,9 +20,9 @@ const Services = () => {
     {
       icon: Car,
       title: "Car Bike Relocation",
-      description: "Specialized carriers for safe transportation of cars and bikes, with insurance and real-time tracking.",
+      description: "Specialized carriers for safe transportation of cars and bikes, offering insurance, expert handling, and real-time tracking.",
       features: ["All India delivery", "Insurance coverage", "Door-to-door pickup", "Real-time tracking"],
-  link: "/services/Car-Bike-Relocation",
+      link: "/services/Car-Bike-Relocation",
       color: "from-red-500 to-red-600"
     },
     {
@@ -30,16 +30,15 @@ const Services = () => {
       title: "Office Relocation",
       description: "Professional office moving solutions for businesses of all sizes, with minimal downtime and complete confidentiality.",
       features: ["IT equipment handling", "Furniture & files transfer", "Weekend/after-hours moves", "Custom relocation plans"],
-  link: "/services/Office-Relocation",
+      link: "/services/Office-Relocation",
       color: "from-orange-500 to-orange-600"
     },
-    
     {
       icon: HomeIcon,
       title: "Home Relocation",
       description: "Safe and efficient shifting of your household goods, furniture, and appliances to your new home, anywhere in India.",
       features: ["Door-to-door service", "Expert packing & handling", "Timely delivery", "Unpacking & setup assistance"],
-  link: "/services/Home-Relocation",
+      link: "/services/Home-Relocation",
       color: "from-blue-500 to-blue-600"
     },
     {
@@ -47,7 +46,7 @@ const Services = () => {
       title: "Packaging of Goods",
       description: "High-quality packing materials and techniques to protect your belongings during transit, including fragile items.",
       features: ["Premium packing materials", "Fragile item protection", "Systematic labeling", "Custom packaging"],
-  link: "/services/Packaging-of-Goods",
+      link: "/services/Packaging-of-Goods",
       color: "from-green-500 to-green-600"
     },
     {
@@ -55,7 +54,7 @@ const Services = () => {
       title: "Trained Team",
       description: "Experienced and trained staff to handle all types of moves, ensuring safety and professionalism throughout the process.",
       features: ["Background-checked staff", "Professional training", "Customer-friendly approach", "Efficient teamwork"],
-  link: "/services/Trained-Team",
+      link: "/services/Trained-Team",
       color: "from-purple-500 to-purple-600"
     },
     {
@@ -63,7 +62,7 @@ const Services = () => {
       title: "Warehouse and Storage Services",
       description: "Secure and climate-controlled storage facilities for short-term and long-term needs, with easy access and inventory management.",
       features: ["Climate-controlled storage", "24/7 security", "Flexible duration", "Easy inventory access"],
-  link: "/services/Warehouse-and-Storage-Services",
+      link: "/services/Warehouse-and-Storage-Services",
       color: "from-blue-700 to-blue-900"
     },
   ];
@@ -90,7 +89,7 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-  <section className="py-20 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
@@ -128,7 +127,7 @@ const Services = () => {
                       
                       <Button 
                         asChild 
-                        className="w-full bg-gradient-primary hover:shadow-button group-hover:scale-105 transition-transform duration-300"
+                        className="w-full bg-gradient-primary text-white hover:shadow-button group-hover:scale-105 transition-transform duration-300"
                       >
                         <Link to={service.link} className="flex items-center justify-center">
                           Learn More
@@ -145,7 +144,7 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-  <section className="py-20 bg-yellow-200">
+      <section className="py-20 bg-yellow-200">
         <div className="container mx-auto px-4">
           <motion.div {...fadeInUp} className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 text-foreground">Our Process</h2>
