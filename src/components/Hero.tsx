@@ -90,7 +90,7 @@ const Hero = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="flex flex-col justify-center order-2 md:order-3 lg:order-2 mb-6 md:mb-0"
             >
-            <div className="bg-blue-300/50 backdrop-blur-md rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5 shadow-xl border border-blue-300/30 backdrop-saturate-150 max-h-[400px] sm:max-h-[450px] md:max-h-[500px] overflow-hidden flex flex-col items-center">
+            <div className="bg-white/50 backdrop-blur-md rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5 shadow-xl border border-white-300/30 backdrop-saturate-150 max-h-[400px] sm:max-h-[450px] md:max-h-[500px] overflow-hidden flex flex-col items-center">
               <div className="text-center mb-3 sm:mb-4">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <img 
@@ -104,14 +104,14 @@ const Hero = () => {
                 {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 fill-yellow-400 text-yellow-400" />
                 ))}
-                <span className="text-white font-bold ml-2 text-sm sm:text-base md:text-lg">4.9</span>
+                <span className="text-black font-bold ml-2 text-sm sm:text-base md:text-lg">4.9</span>
               </div>
-              <p className="text-red-100 text-xs sm:text-sm">Based on 100+ reviews</p>
+              <p className="text-black text-xs sm:text-sm">Based on 100+ reviews</p>
               </div>
               <div className="space-y-2 sm:space-y-3 max-h-[60vh] overflow-y-auto w-full">
               {/* Review 1 - Gaurav Semwal */}
               <motion.div 
-                className="bg-blue-600/50 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
+                className="bg-blue-600/70 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
@@ -137,7 +137,7 @@ const Hero = () => {
 
               {/* Review 2 - Swasti Bardhan */}
               <motion.div 
-                className="bg-blue-600/50 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
+                className="bg-blue-600/70 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.0, duration: 0.6 }}
@@ -163,7 +163,7 @@ const Hero = () => {
 
               {/* Review 3 - Mayank Singhal */}
               <motion.div 
-                className="bg-blue-600/50 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
+                className="bg-blue-600/70 rounded-lg p-2 sm:p-3 md:p-4 border border-blue-300/20 backdrop-blur-sm"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2, duration: 0.6 }}
