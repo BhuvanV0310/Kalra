@@ -75,13 +75,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="flex items-center gap-2 text-muted hover:text-primary-glow transition-colors py-1">
-                  <MailIcon size={15} /> Contact
+                <Link to="/blog" className="flex items-center gap-2 text-muted hover:text-primary-glow transition-colors py-1">
+                  <BookOpen size={15} /> Blog
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="flex items-center gap-2 text-muted hover:text-primary-glow transition-colors py-1">
-                  <BookOpen size={15} /> Blog
+                <Link to="/contact" className="flex items-center gap-2 text-muted hover:text-primary-glow transition-colors py-1">
+                  <MailIcon size={15} /> Contact
                 </Link>
               </li>
             </ul>

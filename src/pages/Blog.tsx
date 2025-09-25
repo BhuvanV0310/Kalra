@@ -183,7 +183,7 @@ const Blog = () => {
                         key={category}
                         className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
                           selectedCategory === category
-                            ? "bg-primary text-primary-foreground"
+                            ? "bg-primary text-primary-foreground text-white"
                             : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                         }`}
                         onClick={() => setSelectedCategory(category)}
@@ -298,7 +298,7 @@ const Blog = () => {
                             </div>
                           </div>
                           <Link to={`/blog/${post.id}`}>
-                            <Button variant="ghost" className="p-0 h-auto font-medium text-primary hover:text-primary-glow group">
+                            <Button variant="ghost" className="p-0 h-auto font-medium text-primary hover:text-white group">
                               Read More
                               <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                             </Button>
