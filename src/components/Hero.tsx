@@ -90,7 +90,7 @@ const Hero = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="flex flex-col justify-center order-2 md:order-3 lg:order-2 mb-6 md:mb-0"
             >
-            <div className="bg-white/50 backdrop-blur-md rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5 shadow-xl border border-white-300/30 backdrop-saturate-150 max-h-[400px] sm:max-h-[450px] md:max-h-[500px] overflow-hidden flex flex-col items-center">
+            <div className="bg-white/50 backdrop-blur-md rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5 shadow-xl border border-white-300/30 backdrop-saturate-150 max-h-[400px] sm:max-h-[450px] md:max-h-[400px] overflow-hidden flex flex-col items-center">
               <div className="text-center mb-3 sm:mb-4">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <img 
@@ -105,9 +105,7 @@ const Hero = () => {
                 <Star key={star} className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 fill-yellow-400 text-yellow-400" />
                 ))}
                 <span className="text-black font-bold ml-2 text-sm sm:text-base md:text-lg">4.9</span>
-              </div>
-              <p className="text-black text-xs sm:text-sm">Based on 100+ reviews</p>
-              </div>
+              </div>              </div>
               <div className="space-y-2 sm:space-y-3 max-h-[60vh] overflow-y-auto w-full">
               {/* Review 1 - Gaurav Semwal */}
               <motion.div 
@@ -121,7 +119,7 @@ const Hero = () => {
                   <span className="text-primary font-semibold text-xs sm:text-sm">G</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-white font-medium text-xs sm:text-sm truncate">Gaurav Semwal</p>
+                  <p className="text-white font-medium text-</div>xs sm:text-sm truncate">Gaurav Semwal</p>
                   <p className="text-blue-200 text-xs">Local Guide • 1 month ago</p>
                   <div className="flex items-center gap-1">
                   {[1, 2, 3, 4, 5].map((star) => (
