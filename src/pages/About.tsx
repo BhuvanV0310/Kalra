@@ -58,7 +58,17 @@ const About = () => {
       <section className="bg-gradient-hero text-white py-12 sm:py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 leading-tight">About Kalra Packers & Movers</h1>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 leading-tight relative">
+              About Kalra Packers Movers
+              {/* Animated info emoji */}
+              <motion.span
+                className="absolute -top-3 -right-6 text-3xl"
+                animate={{ rotate: [0, 20, -20, 0] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                ℹ️
+              </motion.span>
+            </h1>
             <p className="text-base sm:text-lg lg:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed px-4">
               Your trusted partner in relocation services for over 30 years. We make moving 
               stress-free with professional expertise and personalized care.
@@ -120,7 +130,20 @@ const About = () => {
                     <Award className="text-primary h-4 w-4 sm:h-5 sm:w-5 mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground text-sm sm:text-base">Industry-leading service standards</span>
                   </li>
+                  <li className="flex items-start space-x-3">
+                    <Award className="text-primary h-4 w-4 sm:h-5 sm:w-5 mt-1 flex-shrink-0" />
+                    <span className="text-lg font-bold text-primary">15k+ Happy Customers</span>
+                  </li>
                 </ul>
+                <div className="mt-8 flex flex-col items-center">
+                  <div className="flex items-center space-x-2">              
+                  </div>
+                  <img
+                  src="/assets/Happy-customers.png"
+                  alt="Happy Customers"
+                  className="w-100 h-100 object-cover mt-4"
+                  />
+                </div>
               </div>
             </motion.div>
           </div>
@@ -128,10 +151,18 @@ const About = () => {
       </section>
 
       {/* Achievements Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-12 sm:mb-16">
+          <motion.div {...fadeInUp} className="text-center mb-12 sm:mb-16 relative">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-foreground">Our Achievements</h2>
+            {/* Animated trophy emoji */}
+            <motion.div
+              className="absolute -top-2 left-1/4 text-2xl"
+              animate={{ y: [0, -5, 0], rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              🏆
+            </motion.div>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Numbers that speak for our commitment to excellence and customer satisfaction
             </p>
@@ -158,7 +189,7 @@ const About = () => {
       </section>
 
       {/* Our Values Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-foreground">Our Values</h2>

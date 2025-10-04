@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { emailjsConfig } from "@/lib/emailjs";
 import { 
   Phone, 
   Mail, 
@@ -69,7 +70,17 @@ const Contact = () => {
       <section className="bg-gradient-hero text-white py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 leading-tight">Contact Us</h1>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 leading-tight relative">
+              Contact Us
+              {/* Animated handshake emoji */}
+              <motion.span
+                className="absolute -top-3 -right-8 text-3xl"
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                🤝
+              </motion.span>
+            </h1>
             <p className="text-base sm:text-lg lg:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed px-4">
               Ready to move? Get in touch with our expert team for a free quote and 
               personalized moving solution tailored to your needs.
@@ -101,7 +112,7 @@ const Contact = () => {
                     ].map((reason, idx) => (
                       <div key={idx} className="flex items-center space-x-2 sm:space-x-3">
                         <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
-                        <span className="text-muted-foreground text-sm sm:text-base lg:text-lg">{reason}</span>
+                        <span className="text-muted-foreground text-base sm:text-lg lg:text-xl">{reason}</span>
                       </div>
                     ))}
                   </div>
@@ -110,35 +121,53 @@ const Contact = () => {
             </motion.div>
 
             <motion.div {...fadeInUp} className="order-1 lg:order-2">
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 text-foreground text-center lg:text-left">Get Your Free Quote</h2>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 text-foreground text-center lg:text-left relative">
+                Get Your Free Quote
+                {/* Animated dollar emoji */}
+                <motion.span
+                  className="absolute -top-2 -right-6 text-2xl"
+                  animate={{ scale: [1, 1.2, 1], rotate: [0, 360] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                >
+                  💵
+                </motion.span>
+              </h2>
                 <form id="quote-form" className="space-y-4 sm:space-y-6" ref={formRef} onSubmit={async (e) => {
                 e.preventDefault();
                 setSending(true);
                 setError("");
                 setSent(false);
+                
                 try {
                   const result = await emailjs.sendForm(
-                  "service_x7x8eoi",
-                  "template_6ixa1vr",
-                  formRef.current,
-                  "MMQt4x2BmjQgdMDOD"
+                    emailjsConfig.serviceId,
+                    emailjsConfig.templateId,
+                    formRef.current,
+                    emailjsConfig.publicKey
                   );
+                  
                   if (result.status === 200) {
-                  setSent(true);
+                    setSent(true);
+                    // Reset form after successful submission
+                    if (formRef.current) {
+                      formRef.current.reset();
+                    }
                   } else {
-                  setError("Failed to send. Please try again later.");
+                    setError("Failed to send. Please try again later.");
                   }
                 } catch (err) {
+                  console.error("EmailJS error:", err);
                   setError("Failed to send. Please check your internet connection or try again later.");
                 }
                 setSending(false);
                 }}>
+                
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-black">
-                    Mobile Number *
+                    Your Phone Number *
                   </label>
                   <Input 
-                    name="user_mobile" 
+                    name="user_phone" 
                     type="tel" 
                     required 
                     pattern="[0-9]{10}" 
@@ -146,19 +175,22 @@ const Contact = () => {
                     placeholder="Enter your 10-digit mobile number"
                   />
                 </div>
+
                 <div className="space-y-2">
                   <Textarea 
-                    name="additional_details"
-                    placeholder="Tell us about your moving requirements, number of rooms, special items, etc."
-                    rows={4}
+                    name="user_message"
+                    required
+                    placeholder="Tell us about your moving requirements, number of rooms, locations, preferred dates, etc."
+                    rows={5}
                     className="bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary resize-none text-base"
                   />
                 </div>
+                
                 <Button className="w-full bg-yellow-200 text-blue-600 hover:text-white hover:shadow-button group pt-0 py-3 sm:py-4 text-base sm:text-lg font-semibold touch-manipulation" size="lg" type="submit" disabled={sending}>
                   <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  {sending ? "Sending..." : "Send Quote Request"}
+                  {sending ? "Sending..." : "Send Message"}
                 </Button>
-                {sent && <div className="text-green-600 mt-2 text-sm sm:text-base font-medium">Quote request sent successfully!</div>}
+                {sent && <div className="text-green-600 mt-2 text-sm sm:text-base font-medium">Message sent successfully!</div>}
                 {error && <div className="text-red-600 mt-2 text-sm sm:text-base">{error}</div>}
                 </form>
             </motion.div>

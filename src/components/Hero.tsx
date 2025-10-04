@@ -3,15 +3,25 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight, MapPinned, Star, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
+import { emailjsConfig } from "@/lib/emailjs";
 // Removed import for public image
 
 const Hero = () => {
   const [showReviews, setShowReviews] = React.useState(false);
+  
+  // Form state for hero contact form
+  const formRef = useRef(null);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-hero overflow-hidden">
+    <section className="relative min-h-screen flex items-center bg-white overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-white/5 opacity-20"></div>
+        <div className="absolute inset-0 bg-gray-50/20 opacity-20"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
@@ -21,66 +31,84 @@ const Hero = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-white flex flex-col justify-center order-1 md:order-1 lg:order-1 text-center md:text-left"
+            className="text-gray-800 flex flex-col justify-center order-1 md:order-1 lg:order-1 text-center md:text-left"
           >
             <motion.h1 
-              className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6"
+              className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6 relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
+              {/* Animated moving truck emoji */}
+              <motion.div 
+                className="absolute -top-8 -right-4 text-4xl"
+                animate={{ x: [0, 10, 0], y: [0, -5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                🚛
+              </motion.div>
+              
               Professional
               <br />
-              <span className="text-yellow-200 drop-shadow-lg">Moving Services</span>
+              <span className="text-blue-600 drop-shadow-lg relative">
+                Moving Services
+                {/* Sparkle effect */}
+                <motion.span
+                  className="absolute -top-2 -right-2 text-2xl"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                >
+                  ✨
+                </motion.span>
+              </span>
             </motion.h1>
             
-            <motion.p 
-              className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 md:mb-7 lg:mb-8 text-blue-100 leading-relaxed max-w-xl md:max-w-2xl mx-auto md:mx-0"
+            {/* Bullet Points */}
+            <motion.ul 
+              className="space-y-3 sm:space-y-4 mb-4 sm:mb-6 md:mb-7 lg:mb-8 max-w-xl md:max-w-2xl mx-auto md:mx-0"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Trusted packers and movers providing door-to-door relocation services. 
-              Safe, reliable, and efficient moving solutions across India.
-            </motion.p>
-
-            <motion.div 
-              className="flex flex-col gap-3 sm:gap-4 mb-4 sm:mb-6 md:mb-7 lg:mb-8 max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 lg:max-w-none"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              <Link to="/contact#quote-form" className="w-full">
-                <Button
-                  size="lg"
-                  className="bg-yellow-200 text-primary hover:bg-primary-glow hover:text-white shadow-hero group flex items-center justify-center w-full py-3 sm:py-4 md:py-4 lg:py-4 text-sm sm:text-base md:text-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95"
+              <li className="flex items-center text-sm sm:text-base md:text-lg text-gray-700 font-bold">
+                <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0 border border-black"></span>
+                30+ Years Experience
+                <motion.span 
+                  className="ml-2 text-lg"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 >
-                  Get Free Quote
-                  <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </motion.div>
-
-            {/* Features */}
-            <motion.div 
-              className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 text-center max-w-xs sm:max-w-md md:max-w-lg mx-auto md:mx-0 lg:max-w-none"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-            >
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-white">30+</div>
-                <div className="text-xs sm:text-sm md:text-base text-white leading-tight">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-white">10K+</div>
-                <div className="text-xs sm:text-sm md:text-base text-white leading-tight">Happy Customers</div>
-              </div>
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-white">24/7</div>
-                <div className="text-xs sm:text-sm md:text-base text-white leading-tight">Support</div>
-              </div>
-            </motion.div>
+                  🏆
+                </motion.span>
+              </li>
+              <li className="flex items-center text-sm sm:text-base md:text-lg text-gray-700 font-bold">
+                <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0 border border-black"></span>
+                15000+ successfully moved orders
+                <motion.span 
+                  className="ml-2 text-lg"
+                  animate={{ y: [0, -3, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                >
+                  📦
+                </motion.span>
+              </li>
+              <li className="flex items-center text-sm sm:text-base md:text-lg text-gray-700 font-bold">
+                <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0 border border-black"></span>
+                GPS enabled vehicle
+              </li>
+              <li className="flex items-center text-sm sm:text-base md:text-lg text-gray-700 font-bold">
+                <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0 border border-black"></span>
+                Reasonable rate
+              </li>
+              <li className="flex items-center text-sm sm:text-base md:text-lg text-gray-700 font-bold">
+                <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0 border border-black"></span>
+                Best Services
+              </li>
+              <li className="flex items-center text-sm sm:text-base md:text-lg text-gray-700 font-bold">
+                <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0 border border-black"></span>
+                24/7 support
+              </li>
+            </motion.ul>
           </motion.div>
 
             {/* Center - Google Reviews (Always Visible) */}
@@ -90,7 +118,7 @@ const Hero = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="flex flex-col justify-center order-2 md:order-3 lg:order-2 mb-6 md:mb-0"
             >
-            <div className="bg-white/50 backdrop-blur-md rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5 shadow-xl border border-white-300/30 backdrop-saturate-150 max-h-[400px] sm:max-h-[450px] md:max-h-[400px] overflow-hidden flex flex-col items-center">
+            <div className="bg-gray-400 translate-x-24 backdrop-blur-md rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5 shadow-xl border border-white-300/30 backdrop-saturate-150 max-h-[400px] sm:max-h-[450px] md:max-h-[400px] overflow-hidden flex flex-col items-center">
               <div className="text-center mb-3 sm:mb-4">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <img 
@@ -102,7 +130,7 @@ const Hero = () => {
               </div>
               <div className="flex items-center justify-center gap-1 mb-1">
                 {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 fill-yellow-400 text-yellow-400" />
+                <Star key={star} className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 fill-yellow-400 text-black" />
                 ))}
                 <span className="text-black font-bold ml-2 text-sm sm:text-base md:text-lg">4.9</span>
               </div>              </div>
@@ -123,7 +151,7 @@ const Hero = () => {
                   <p className="text-blue-200 text-xs">Local Guide • 1 month ago</p>
                   <div className="flex items-center gap-1">
                   {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-yellow-400" />
+                    <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-black" />
                   ))}
                   </div>
                 </div>
@@ -149,7 +177,7 @@ const Hero = () => {
                   <p className="text-blue-200 text-xs">2 months ago</p>
                   <div className="flex items-center gap-1">
                   {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-yellow-400" />
+                    <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-black" />
                   ))}
                   </div>
                 </div>
@@ -175,7 +203,7 @@ const Hero = () => {
                   <p className="text-blue-200 text-xs">Local Guide • 6 months ago</p>
                   <div className="flex items-center gap-1">
                   {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-yellow-400" />
+                    <Star key={star} className="w-2 h-2 sm:w-3 sm:h-3 fill-yellow-400 text-black" />
                   ))}
                   </div>
                 </div>
@@ -186,7 +214,7 @@ const Hero = () => {
               </motion.div>
               </div>
               <a
-              href="https://www.google.com/search?q=kalra+packers+movers&client"
+              href="https://www.google.com/search?sca_esv=d1d26e03a6da53f6&sxsrf=AE3TifNFDl1VBfV6IwbVC5zCkAOJGcu8pw:1759399471029&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E8bWnJWeA0IzsbiXKSDSU2ob9GCQYO__QO5eZk2eMojlEYpjhCb2fqyhYXC9yw8jKqvPjkFU_7MRL0wT2WL6PXV6Lexd6-Vw4YotuISpAqPbcDWyeQ%3D%3D&q=Kalra+Packers+Movers+Reviews&sa=X&ved=2ahUKEwjBhPTjoYWQAxV21jgGHeLVCsEQ0bkNegQIKBAE&biw=1366&bih=599&dpr=1"
               target="_blank"
               rel="noopener noreferrer"
               className="block mt-4 text-blue-900 underline text-sm sm:text-base text-center hover:text-blue-700 transition-colors touch-manipulation"
@@ -203,10 +231,57 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.8 }}
             className="flex flex-col justify-center h-full order-3 md:order-2 lg:order-3"
           >
-            <div className="bg-red-600 rounded-xl p-4 sm:p-5 md:p-6 lg:p-5 xl:p-6 shadow-lg flex flex-col gap-3 sm:gap-4 hover:shadow-xl transition-shadow duration-300">
-              <h2 className="text-base sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-2">Contact Us</h2>
-              <form className="flex flex-col gap-3 sm:gap-4">
+            <div className="bg-red-600 translate-x-20 rounded-xl p-4 sm:p-5 md:p-6 lg:p-5 xl:p-6 shadow-lg flex flex-col gap-3 sm:gap-4 hover:shadow-xl transition-shadow duration-300 relative">
+              {/* Floating phone emoji */}
+              <motion.div 
+                className="absolute -top-3 -left-3 text-2xl"
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                📞
+              </motion.div>
+              
+              <h2 className="text-base sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-2 relative">
+                Contact Us
+                <motion.span
+                  className="absolute -top-1 -right-6 text-lg"
+                  animate={{ opacity: [1, 0.5, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  💬
+                </motion.span>
+              </h2>
+              <form ref={formRef} className="flex flex-col gap-3 sm:gap-4" onSubmit={async (e) => {
+                e.preventDefault();
+                setSending(true);
+                setError("");
+                setSent(false);
+                
+                try {
+                  const result = await emailjs.sendForm(
+                    emailjsConfig.serviceId,
+                    emailjsConfig.templateId,
+                    formRef.current,
+                    emailjsConfig.publicKey
+                  );
+                  
+                  if (result.status === 200) {
+                    setSent(true);
+                    // Reset form after successful submission
+                    if (formRef.current) {
+                      formRef.current.reset();
+                    }
+                  } else {
+                    setError("Failed to send. Please try again later.");
+                  }
+                } catch (err) {
+                  console.error("EmailJS error:", err);
+                  setError("Failed to send. Please check your internet connection or try again later.");
+                }
+                setSending(false);
+              }}>
                 <input
+                  name="user_phone"
                   type="tel"
                   placeholder="Your Number"
                   className="px-3 sm:px-4 py-3 sm:py-4 rounded-lg text-red-700 focus:outline-none focus:ring-2 focus:ring-yellow-200 text-sm sm:text-base transition-all duration-200 hover:shadow-md"
@@ -214,6 +289,7 @@ const Hero = () => {
                   pattern="[0-9]{10}"
                 />
                 <textarea
+                  name="user_message"
                   placeholder="Your Message"
                   className="px-3 sm:px-4 py-3 sm:py-4 rounded-lg text-red-700 focus:outline-none focus:ring-2 focus:ring-yellow-200 text-sm sm:text-base resize-none transition-all duration-200 hover:shadow-md"
                   rows={3}
@@ -221,10 +297,14 @@ const Hero = () => {
                 />
                 <button
                   type="submit"
-                  className="bg-yellow-200 text-red-700 font-semibold py-3 sm:py-4 rounded-lg hover:bg-red-700 hover:text-white transition-all duration-300 text-sm sm:text-base touch-manipulation hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
+                  disabled={sending}
+                  className="bg-yellow-200 text-red-700 font-semibold py-3 sm:py-4 rounded-lg hover:bg-red-700 hover:text-white transition-all duration-300 text-sm sm:text-base touch-manipulation hover:scale-105 active:scale-95 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {sending ? "Sending..." : "Send Message"}
                 </button>
+                
+                {sent && <div className="text-green-200 text-xs sm:text-sm font-medium text-center">Message sent successfully! We'll contact you soon.</div>}
+                {error && <div className="text-yellow-200 text-xs sm:text-sm text-center">{error}</div>}
               </form>
               <div className="flex items-center gap-2 mt-1 sm:mt-2">
                 <MapPinned className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white flex-shrink-0" />

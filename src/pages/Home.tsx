@@ -25,10 +25,10 @@ const Home = () => {
 
   const services = [
     {
-      icon: HomeIcon,
-      title: "Residential Moving",
-      description: "Safe and reliable home shifting services with professional packing and careful handling.",
-      link: "/services/residential"
+      icon: Truck,
+      title: "Office Relocation",
+      description: "Complete office moving solutions with specialized equipment and experienced staff.",
+      link: "/services/office-relocation"
     },
     {
       icon: Building,
@@ -37,10 +37,10 @@ const Home = () => {
       link: "/services/commercial"
     },
     {
-      icon: Truck,
-      title: "Office Relocation",
-      description: "Complete office moving solutions with specialized equipment and experienced staff.",
-      link: "/services/office-relocation"
+      icon: HomeIcon,
+      title: "Residential Moving",
+      description: "Safe and reliable home shifting services with professional packing and careful handling.",
+      link: "/services/residential"
     },
     {
       icon: Package,
@@ -102,9 +102,17 @@ const Home = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <motion.div {...fadeInUp} className="order-2 lg:order-1">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-foreground text-center lg:text-left">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-foreground text-center lg:text-left relative">
                 Welcome to 
                 <span className="text-primary"> Kalra Packers & Movers</span>
+                {/* Animated house emoji */}
+                <motion.span
+                  className="absolute -top-2 -right-8 text-3xl"
+                  animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                >
+                  🏠
+                </motion.span>
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-center lg:text-left">
                 With over 30 years of experience in the moving industry, Kalra Packers and Movers 
@@ -150,7 +158,7 @@ const Home = () => {
               {/* Stats Card */}
               <div className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-yellow-200 rounded-lg shadow-card p-4 sm:p-6">
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary">10,000+</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-primary">15,000+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Happy Customers</div>
                 </div>
               </div>
@@ -162,8 +170,16 @@ const Home = () => {
       {/* Services Section */}
   <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-12 sm:mb-16">
+          <motion.div {...fadeInUp} className="text-center mb-12 sm:mb-16 relative">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-foreground">Our Services</h2>
+            {/* Animated gear emoji */}
+            <motion.div
+              className="absolute top-0 right-1/4 text-2xl"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            >
+              ⚙️
+            </motion.div>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               We offer comprehensive moving and relocation services tailored to meet your specific needs
             </p>
@@ -207,11 +223,40 @@ const Home = () => {
         staticImages={galleryImages}
         className=""
       />
+
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-hero text-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-hero text-white relative">
+        {/* Floating money emoji */}
+        <motion.div
+          className="absolute top-8 left-8 text-3xl"
+          animate={{ y: [0, -10, 0], x: [0, 5, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          💰
+        </motion.div>
+        
+        {/* Floating rocket emoji */}
+        <motion.div
+          className="absolute top-12 right-12 text-3xl"
+          animate={{ y: [0, -15, 0], rotate: [0, 10, -10, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        >
+          🚀
+        </motion.div>
+        
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">Ready to Move?</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 relative">
+              Ready to Move?
+              {/* Animated checkmark */}
+              <motion.span
+                className="absolute -top-2 -right-8 text-2xl"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                ✅
+              </motion.span>
+            </h2>
             <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 text-blue-100 max-w-2xl mx-auto px-4">
               Get a free quote today and experience stress-free relocation with our professional team
             </p>

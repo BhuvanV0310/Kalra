@@ -10,11 +10,21 @@ const FloatingCallButton = () => {
       transition={{ delay: 1, duration: 0.3 }}
       className="fixed bottom-6 right-6 z-50"
     >
-      <Link
-        to="/contact#quote-form"
-        className="group flex items-center justify-center w-14 h-14 bg-green-500 md:hover:bg-green-600 rounded-full shadow-lg md:hover:shadow-xl transition-all duration-300 transform md:hover:scale-110"
-        aria-label="Contact us"
-      >
+      <div className="relative">
+        {/* Animated phone ringing effect */}
+        <motion.div
+          className="absolute -top-8 -right-2 text-2xl"
+          animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          🔔
+        </motion.div>
+        
+        <Link
+          to="/contact#quote-form"
+          className="group flex items-center justify-center w-14 h-14 bg-green-500 md:hover:bg-green-600 rounded-full shadow-lg md:hover:shadow-xl transition-all duration-300 transform md:hover:scale-110"
+          aria-label="Contact us"
+        >
         <Phone 
           size={24} 
           className="md:group-hover:animate-pulse text-white"
@@ -28,7 +38,8 @@ const FloatingCallButton = () => {
           Request Call Back
           <div className="absolute top-1/2 right-0 transform translate-x-full -translate-y-1/2 border-4 border-transparent border-l-gray-800"></div>
         </div>
-      </Link>
+        </Link>
+      </div>
     </motion.div>
   );
 };

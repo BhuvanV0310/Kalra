@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+﻿import React, { useState, useEffect, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Button } from '@/components/ui/button';
@@ -49,173 +50,6 @@ const SimpleGallery: React.FC<SimpleGalleryProps> = ({
     [autoplayPlugin]
   );
 
-  // Extract images from Google Photos shared album URL
-  const extractGooglePhotosImages = useCallback(async (url: string): Promise<ImageData[]> => {
-    try {
-      setError(null);
-      
-      if (!isValidGooglePhotosUrl(url)) {
-        throw new Error('Invalid Google Photos album URL');
-      }
-
-      console.log('Google Photos URL provided:', url);
-      
-      // Due to CORS restrictions, we cannot directly fetch from Google Photos
-      // Instead, we'll use high-quality local images that represent your services
-      // In production, you would implement server-side fetching or use Google Photos API
-      
-      console.log('Using curated local images that represent your moving services');
-      
-      return [
-        {
-          id: 'service-1',
-          url: '/assets/office-relocation.jpg',
-          alt: 'Kalra Packers - Professional Office Relocation Services'
-        },
-        {
-          id: 'service-2',
-          url: '/assets/residential-moving.jpg',
-          alt: 'Kalra Packers - Residential Moving and Home Shifting'
-        },
-        {
-          id: 'service-3',
-          url: '/assets/services-truck.jpg',
-          alt: 'Kalra Packers - Modern Fleet of Moving Trucks'
-        },
-        {
-          id: 'service-4',
-          url: '/assets/hero-moving.jpg',
-          alt: 'Kalra Packers - Expert Moving Team in Action'
-        },
-        {
-          id: 'service-5',
-          url: '/assets/Automotive.jpg',
-          alt: 'Kalra Packers - Automotive Industry Specialized Moving'
-        },
-        {
-          id: 'service-6',
-          url: '/assets/Manufacturing.jpg',
-          alt: 'Kalra Packers - Manufacturing Sector Relocation Services'
-        },
-        {
-          id: 'service-7',
-          url: '/assets/Pharmaceutical.jpg',
-          alt: 'Kalra Packers - Pharmaceutical Industry Moving Solutions'
-        },
-        {
-          id: 'service-8',
-          url: '/assets/FMCG-Consumer-Goods.jpg',
-          alt: 'Kalra Packers - FMCG and Consumer Goods Transportation'
-        },
-        {
-          id: 'service-9',
-          url: '/assets/Electronics-Technology.jpg',
-          alt: 'Kalra Packers - Electronics and Technology Moving Services'
-        },
-        {
-          id: 'service-10',
-          url: '/assets/LOGO.png',
-          alt: 'Kalra Packers & Movers - Trusted Moving Company'
-        }
-      ];
-      
-    } catch (err) {
-      console.error('Error processing gallery images:', err);
-      setError('Failed to load gallery images');
-      
-      // Fallback to essential images
-      return [
-        {
-          id: 'essential-1',
-          url: '/assets/office-relocation.jpg',
-          alt: 'Kalra Packers - Office Relocation Service'
-        },
-        {
-          id: 'essential-2',
-          url: '/assets/residential-moving.jpg',
-          alt: 'Kalra Packers - Residential Moving Service'
-        },
-        {
-          id: 'essential-3',
-          url: '/assets/services-truck.jpg',
-          alt: 'Kalra Packers - Moving Truck Fleet'
-        },
-        {
-          id: 'essential-4',
-          url: '/assets/hero-moving.jpg',
-          alt: 'Kalra Packers - Professional Moving Team'
-        },
-        {
-          id: 'essential-5',
-          url: '/assets/LOGO.png',
-          alt: 'Kalra Packers & Movers - Company Logo'
-        }
-      ];
-    } finally {
-      // Images processed
-    }
-  }, []);
-
-  // Process static images
-  const processStaticImages = useCallback((imageUrls: string[]): ImageData[] => {
-    return imageUrls.map((url, index) => ({
-      id: `static-${index}`,
-      url,
-      alt: `Gallery Image ${index + 1}`
-    }));
-  }, []);
-
-  // Load images on component mount or when URLs change
-  useEffect(() => {
-    const loadImages = async () => {
-      try {
-        let loadedImages: ImageData[] = [];
-
-        if (googlePhotosUrl) {
-          loadedImages = await extractGooglePhotosImages(googlePhotosUrl);
-        } else if (staticImages.length > 0) {
-          loadedImages = processStaticImages(staticImages);
-        } else {
-          // Default images
-          loadedImages = [
-            {
-              id: 'logo',
-              url: '/assets/LOGO.png',
-              alt: 'Kalra Packers & Movers Logo'
-            }
-          ];
-        }
-
-        setImages(loadedImages);
-        setError(null);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load images');
-        // Fallback to static images or default
-        if (staticImages.length > 0) {
-          setImages(processStaticImages(staticImages));
-        }
-      }
-    };
-
-    loadImages();
-  }, [googlePhotosUrl, staticImages, extractGooglePhotosImages, processStaticImages]);
-
-  // Initialize autoplay when emblaApi is ready
-  useEffect(() => {
-    if (!emblaApi || !autoplayPlugin) return;
-
-    const timer = setTimeout(() => {
-      try {
-        autoplayPlugin.play();
-      } catch (error) {
-        console.warn('Error starting autoplay:', error);
-      }
-    }, 500); // Delay to ensure embla is fully initialized
-
-    return () => clearTimeout(timer);
-  }, [emblaApi, autoplayPlugin]);
-
-  // Navigation functions
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
@@ -224,11 +58,100 @@ const SimpleGallery: React.FC<SimpleGalleryProps> = ({
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
+  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
+  const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
+
+  const onSelect = useCallback((emblaApi: any) => {
+    setPrevBtnDisabled(!emblaApi.canScrollPrev());
+    setNextBtnDisabled(!emblaApi.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    onSelect(emblaApi);
+    emblaApi.on('reInit', onSelect);
+    emblaApi.on('select', onSelect);
+
+    // Start autoplay after a short delay
+    const timer = setTimeout(() => {
+      autoplayPlugin.play();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+      emblaApi.off('reInit', onSelect);
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi, onSelect, autoplayPlugin]);
+
+  // Effect to load images
+  useEffect(() => {
+    const loadImages = async () => {
+      try {
+        let imagesToShow: ImageData[] = [];
+
+        // Add static images
+        if (staticImages.length > 0) {
+          const staticImageData = staticImages.map((url, index) => ({
+            url,
+            alt: `Moving service ${index + 1}`,
+            id: `static-${index}`
+          }));
+          imagesToShow = [...imagesToShow, ...staticImageData];
+        }
+
+        // Add fallback images if no images are available
+        if (imagesToShow.length === 0) {
+          const fallbackImages = [
+            { url: '/assets/office-relocation.jpg', alt: 'Office Relocation Services', id: 'fallback-1' },
+            { url: '/assets/residential-moving.jpg', alt: 'Residential Moving Services', id: 'fallback-2' },
+            { url: '/assets/services-truck.jpg', alt: 'Professional Moving Truck', id: 'fallback-3' },
+          ];
+          imagesToShow = fallbackImages;
+        }
+
+        setImages(imagesToShow);
+
+        // Set error for Google Photos (if provided but can't be accessed)
+        if (googlePhotosUrl && isValidGooglePhotosUrl(googlePhotosUrl)) {
+          setError('google-photos-restricted');
+        }
+      } catch (err) {
+        console.error('Error loading gallery images:', err);
+        setError('Failed to load gallery images');
+      }
+    };
+
+    loadImages();
+  }, [googlePhotosUrl, staticImages]);
+
+  if (images.length === 0) {
+    return (
+      <section className={`py-12 sm:py-16 lg:py-20 bg-gradient-section ${className}`}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+            <p className="mt-4 text-muted-foreground">Loading gallery...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <div className={`py-12 sm:py-16 lg:py-20 bg-white ${className}`}>
+    <section className={`py-12 sm:py-16 lg:py-20 bg-gradient-section ${className}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 relative">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8">Our Services Gallery</h2>
+          {/* Animated camera emoji */}
+          <motion.div
+            className="absolute -top-2 right-1/4 text-3xl"
+            animate={{ y: [0, -5, 0], rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            📸
+          </motion.div>
           <p className="text-lg text-gray-600 mb-6">Showcasing our professional moving and packing services</p>
           
           {error && (
@@ -248,33 +171,23 @@ const SimpleGallery: React.FC<SimpleGalleryProps> = ({
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {images.map((image) => (
-                <div
-                  key={image.id}
-                  className="flex-[0_0_100%] min-w-0 relative"
-                >
-                  <Card className="mx-2 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div key={image.id} className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] pl-4">
+                  <Card className="mx-2 overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                     <CardContent className="p-0">
-                      <div className="relative h-48 sm:h-64 lg:h-96">
+                      <div className="aspect-video relative overflow-hidden">
                         <img
                           src={image.url}
                           alt={image.alt}
-                          className="w-full h-full object-contain bg-gray-50 transition-transform duration-300"
-                          loading={image.id.includes('service-1') || image.id.includes('service-2') ? "eager" : "lazy"}
-                          decoding="async"
-                          {...(image.id.includes('service-1') ? { fetchpriority: "high" } : { fetchpriority: "low" })}
-                          width="800"
-                          height="600"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
                           onError={(e) => {
-                            console.warn(`Failed to load image: ${image.url}`);
-                            e.currentTarget.src = '/assets/placeholder.svg';
+                            const target = e.target as HTMLImageElement;
+                            target.src = '/assets/placeholder.svg';
                           }}
-                          onLoad={(e) => {
-                            e.currentTarget.style.opacity = '1';
-                          }}
-                          style={{ opacity: 0, transition: 'opacity 0.3s ease-in-out' }}
                         />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-colors duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <p className="text-white text-sm p-4 font-medium">{image.alt}</p>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -283,37 +196,37 @@ const SimpleGallery: React.FC<SimpleGalleryProps> = ({
             </div>
           </div>
 
-          {/* Navigation Arrows - Show only on hover */}
-          {images.length > 1 && (
+          {/* Navigation Buttons - Only show if more than 3 images */}
+          {images.length > 3 && (
             <>
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              <button
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-50 z-10"
                 onClick={scrollPrev}
+                disabled={prevBtnDisabled}
+                aria-label="Previous image"
               >
                 <ChevronLeft className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              </button>
+              <button
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-50 z-10"
                 onClick={scrollNext}
+                disabled={nextBtnDisabled}
+                aria-label="Next image"
               >
                 <ChevronRight className="h-5 w-5" />
-              </Button>
+              </button>
             </>
           )}
         </div>
 
-        {/* Google Photos Link - Bottom */}
+        {/* View All Button */}
         {googlePhotosUrl && (
           <div className="text-center mt-6">
             <Button
               variant="outline"
               size="sm"
               asChild
-              className="flex items-center gap-2 mx-auto hover:to-blue-400 hover:text-white"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-200 text-gray-800 border-yellow-300 hover:bg-yellow-300 hover:text-gray-900 w-auto"
             >
               <a href={googlePhotosUrl} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-4 w-4" />
@@ -323,7 +236,7 @@ const SimpleGallery: React.FC<SimpleGalleryProps> = ({
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

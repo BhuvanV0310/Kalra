@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingCallButton from "@/components/FloatingCallButton";
+import FloatingWhatsAppButton from "@/components/FloatingWhatsAppButton";
 
 
 const MainLayout = () => {
@@ -13,6 +14,7 @@ const MainLayout = () => {
       </main>
       <Footer />
       <FloatingCallButton />
+      <FloatingWhatsAppButton />
     </div>
   );
 };
