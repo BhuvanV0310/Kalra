@@ -62,12 +62,6 @@ const Home = () => {
     },
   ];
 
-  // Gallery images from Flickr (replace/add more URLs as needed)
-  const galleryImages = [
-    "https://live.staticflickr.com/65535/54782168375_d1890ecb6f_b.jpg",
-    // Add more direct image URLs from your Flickr album here
-  ];
-
   const testimonials = [
     {
       name: "Priya Sharma",
@@ -105,14 +99,7 @@ const Home = () => {
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-foreground text-center lg:text-left relative">
                 Welcome to 
                 <span className="text-primary"> Kalra Packers & Movers</span>
-                {/* Animated house emoji */}
-                <motion.span
-                  className="absolute -top-2 -right-8 text-3xl"
-                  animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                >
-                  🏠
-                </motion.span>
+
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-center lg:text-left">
                 With over 30 years of experience in the moving industry, Kalra Packers and Movers 
@@ -178,7 +165,7 @@ const Home = () => {
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
             >
-              ⚙️
+
             </motion.div>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               We offer comprehensive moving and relocation services tailored to meet your specific needs
@@ -220,7 +207,6 @@ const Home = () => {
       {/* Our Gallery Section */}
       <SimpleGallery 
         googlePhotosUrl="https://photos.app.goo.gl/bPLaJ2huuHdEYqEi7"
-        staticImages={galleryImages}
         className=""
       />
 
@@ -232,7 +218,7 @@ const Home = () => {
           animate={{ y: [0, -10, 0], x: [0, 5, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
         >
-          💰
+
         </motion.div>
         
         {/* Floating rocket emoji */}
@@ -241,7 +227,7 @@ const Home = () => {
           animate={{ y: [0, -15, 0], rotate: [0, 10, -10, 0] }}
           transition={{ duration: 5, repeat: Infinity }}
         >
-          🚀
+
         </motion.div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -254,7 +240,7 @@ const Home = () => {
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                ✅
+
               </motion.span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 text-blue-100 max-w-2xl mx-auto px-4">

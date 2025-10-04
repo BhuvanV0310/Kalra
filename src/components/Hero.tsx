@@ -39,27 +39,13 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              {/* Animated moving truck emoji */}
-              <motion.div 
-                className="absolute -top-8 -right-4 text-4xl"
-                animate={{ x: [0, 10, 0], y: [0, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              >
-                🚛
-              </motion.div>
+
               
               Professional
               <br />
               <span className="text-blue-600 drop-shadow-lg relative">
                 Moving Services
-                {/* Sparkle effect */}
-                <motion.span
-                  className="absolute -top-2 -right-2 text-2xl"
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                >
-                  ✨
-                </motion.span>
+
               </span>
             </motion.h1>
             
@@ -73,24 +59,12 @@ const Hero = () => {
               <li className="flex items-center text-sm sm:text-base md:text-lg text-gray-700 font-bold">
                 <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0 border border-black"></span>
                 30+ Years Experience
-                <motion.span 
-                  className="ml-2 text-lg"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  🏆
-                </motion.span>
+
               </li>
               <li className="flex items-center text-sm sm:text-base md:text-lg text-gray-700 font-bold">
                 <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0 border border-black"></span>
                 15000+ successfully moved orders
-                <motion.span 
-                  className="ml-2 text-lg"
-                  animate={{ y: [0, -3, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                >
-                  📦
-                </motion.span>
+
               </li>
               <li className="flex items-center text-sm sm:text-base md:text-lg text-gray-700 font-bold">
                 <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0 border border-black"></span>
@@ -233,23 +207,11 @@ const Hero = () => {
           >
             <div className="bg-red-600 translate-x-20 rounded-xl p-4 sm:p-5 md:p-6 lg:p-5 xl:p-6 shadow-lg flex flex-col gap-3 sm:gap-4 hover:shadow-xl transition-shadow duration-300 relative">
               {/* Floating phone emoji */}
-              <motion.div 
-                className="absolute -top-3 -left-3 text-2xl"
-                animate={{ rotate: [0, 15, -15, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                📞
-              </motion.div>
+
               
               <h2 className="text-base sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-2 relative">
                 Contact Us
-                <motion.span
-                  className="absolute -top-1 -right-6 text-lg"
-                  animate={{ opacity: [1, 0.5, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  💬
-                </motion.span>
+
               </h2>
               <form ref={formRef} className="flex flex-col gap-3 sm:gap-4" onSubmit={async (e) => {
                 e.preventDefault();

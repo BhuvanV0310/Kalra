@@ -17,13 +17,7 @@ const FloatingWhatsAppButton = () => {
     >
       <div className="relative">
         {/* Animated chat emoji */}
-        <motion.div
-          className="absolute -top-8 -left-3 text-2xl"
-          animate={{ scale: [1, 1.2, 1], y: [0, -3, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          💬
-        </motion.div>
+
         
         <button
           onClick={handleWhatsAppClick}

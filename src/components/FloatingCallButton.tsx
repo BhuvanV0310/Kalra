@@ -12,13 +12,7 @@ const FloatingCallButton = () => {
     >
       <div className="relative">
         {/* Animated phone ringing effect */}
-        <motion.div
-          className="absolute -top-8 -right-2 text-2xl"
-          animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          🔔
-        </motion.div>
+
         
         <Link
           to="/contact#quote-form"

@@ -161,7 +161,7 @@ const About = () => {
               animate={{ y: [0, -5, 0], rotate: [0, 10, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              🏆
+
             </motion.div>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Numbers that speak for our commitment to excellence and customer satisfaction

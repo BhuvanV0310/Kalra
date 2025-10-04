@@ -129,7 +129,7 @@ const Contact = () => {
                   animate={{ scale: [1, 1.2, 1], rotate: [0, 360] }}
                   transition={{ duration: 4, repeat: Infinity }}
                 >
-                  💵
+
                 </motion.span>
               </h2>
                 <form id="quote-form" className="space-y-4 sm:space-y-6" ref={formRef} onSubmit={async (e) => {

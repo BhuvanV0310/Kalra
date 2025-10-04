@@ -9,6 +9,18 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
+  const handleNavClick = () => {
+    setIsOpen(false);
+    // Scroll to top when navigating
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+  };
+
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
@@ -63,7 +75,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
           <div className="flex justify-between items-center py-1 sm:py-2">
             {/* Logo */}
-            <Link to="/" className="flex items-center" aria-label="Home">
+            <Link to="/" className="flex items-center" aria-label="Home" onClick={handleNavClick}>
               <span className="bg-yellow-200 rounded-lg px-2 sm:px-3 py-1 sm:py-1.5 shadow border border-blue-900 flex flex-col items-center font-extrabold text-blue-900 tracking-widest whitespace-nowrap drop-shadow mr-2 sm:mr-4 lg:mr-8" style={{ letterSpacing: '0.12em', fontFamily: 'serif', minWidth: '140px' }}>
                 <span className="font-extrabold text-xs sm:text-sm lg:text-base tracking-widest text-blue-900" style={{ letterSpacing: '0.08em', fontFamily: 'serif' }}>KALRA Packers Movers</span>
                 <span className="font-bold text-[0.5rem] sm:text-[0.6rem] lg:text-[0.7rem] tracking-widest mt-0.5 px-1 sm:px-2 py-0.5 rounded" style={{ background: '#0a2e73', color: '#fff', letterSpacing: '0.2em', boxShadow: '0 1px 4px rgba(10,46,115,0.10)' }}>SINCE 1992</span>
@@ -80,6 +92,7 @@ const Navbar = () => {
                       "font-bold text-sm xl:text-base px-2 xl:px-3 py-2 rounded-xl transition-all duration-200 hover:text-primary hover:bg-white hover:shadow-sm",
                       isActive(item.path) ? "text-primary bg-white shadow-sm" : "text-foreground"
                     )}
+                    onClick={handleNavClick}
                   >
                     {item.name}
                   </Link>
@@ -92,6 +105,7 @@ const Navbar = () => {
                             key={subItem.name}
                             to={subItem.path}
                             className="block px-4 py-2.5 text-sm xl:text-base text-white hover:bg-blue-700 hover:text-yellow-200 transition-all duration-200 hover:shadow-sm rounded-md mx-2"
+                            onClick={handleNavClick}
                           >
                             {subItem.name}
                           </Link>
@@ -106,7 +120,7 @@ const Navbar = () => {
                 variant="default"
                 className="bg-blue-700 text-white hover:bg-blue-800 hover:text-yellow-200 hover:shadow-button transition-all duration-200 ml-4 xl:ml-6"
               >
-                <Link to="/contact#quote-form" className="w-20 xl:w-24 h-full flex items-center justify-center text-sm xl:text-base font-semibold">
+                <Link to="/contact#quote-form" className="w-20 xl:w-24 h-full flex items-center justify-center text-sm xl:text-base font-semibold" onClick={handleNavClick}>
                   Get Quote
                 </Link>
               </Button>
@@ -142,7 +156,7 @@ const Navbar = () => {
                       "block py-2.5 sm:py-3 font-medium transition-colors duration-200 text-base sm:text-lg touch-manipulation",
                       isActive(item.path) ? "text-primary font-bold" : "text-foreground hover:text-primary"
                     )}
-                    onClick={() => setIsOpen(false)}
+                    onClick={handleNavClick}
                   >
                     {item.name}
                   </Link>
@@ -153,7 +167,7 @@ const Navbar = () => {
                           key={subItem.name}
                           to={subItem.path}
                           className="block py-2 text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation"
-                          onClick={() => setIsOpen(false)}
+                          onClick={handleNavClick}
                         >
                           {subItem.name}
                         </Link>
@@ -164,7 +178,7 @@ const Navbar = () => {
               ))}
               <div className="pt-2 sm:pt-4">
                 <Button className="w-full bg-gradient-primary hover:shadow-button py-3 sm:py-4 text-base sm:text-lg font-semibold touch-manipulation">
-                  <Link to="/contact#quote-form" onClick={() => setIsOpen(false)}>Get Quote</Link>
+                  <Link to="/contact#quote-form" onClick={handleNavClick}>Get Quote</Link>
                 </Button>
               </div>
               
