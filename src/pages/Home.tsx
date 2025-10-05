@@ -206,7 +206,7 @@ const Home = () => {
 
       {/* Our Gallery Section */}
       <SimpleGallery 
-        googlePhotosUrl="https://photos.app.goo.gl/bPLaJ2huuHdEYqEi7"
+        googlePhotosUrl="https://photos.app.goo.gl/PoSYcjGjWuqL4eY56"
         className=""
       />
 
