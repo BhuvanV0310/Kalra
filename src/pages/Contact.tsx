@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { emailjsConfig } from "@/lib/emailjs";
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
+import {
+  Phone,
+  Mail,
+  MapPin,
   Clock,
   Send,
   CheckCircle
@@ -34,13 +34,13 @@ const Contact = () => {
     {
       icon: Clock,
       title: "Hours",
-      details: ["24/7 Customer Support", ],
+      details: ["24/7 Customer Support",],
       color: "from-blue-500 to-blue-600"
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["offers@kalrapackersmovers.in","support@kalrapackersmovers.in"],
+      details: ["offers@kalrapackersmovers.in", "mail@kalrapackersmovers.in"],
       color: "from-orange-500 to-orange-600",
       classname: "text-sm sm:text-base"
     },
@@ -51,7 +51,7 @@ const Contact = () => {
       color: "from-green-500 to-green-600"
     },
     {
-      icon: Phone,  
+      icon: Phone,
       title: "Phone",
       details: ["+91-7292010102", "+91-9876543210"],
       color: "from-purple-500 to-purple-600"
@@ -82,7 +82,7 @@ const Contact = () => {
               </motion.span>
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed px-4">
-              Ready to move? Get in touch with our expert team for a free quote and 
+              Ready to move? Get in touch with our expert team for a free quote and
               personalized moving solution tailored to your needs.
             </p>
           </motion.div>
@@ -90,11 +90,11 @@ const Contact = () => {
       </section>
 
       {/* Contact Info Cards */}
-  <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Contact Form */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            <motion.div 
+            <motion.div
               {...fadeInUp}
               className="space-y-6 sm:space-y-8 order-2 lg:order-1"
             >
@@ -132,12 +132,12 @@ const Contact = () => {
 
                 </motion.span>
               </h2>
-                <form id="quote-form" className="space-y-4 sm:space-y-6" ref={formRef} onSubmit={async (e) => {
+              <form id="quote-form" className="space-y-4 sm:space-y-6" ref={formRef} onSubmit={async (e) => {
                 e.preventDefault();
                 setSending(true);
                 setError("");
                 setSent(false);
-                
+
                 try {
                   const result = await emailjs.sendForm(
                     emailjsConfig.serviceId,
@@ -145,7 +145,7 @@ const Contact = () => {
                     formRef.current,
                     emailjsConfig.publicKey
                   );
-                  
+
                   if (result.status === 200) {
                     setSent(true);
                     // Reset form after successful submission
@@ -160,24 +160,24 @@ const Contact = () => {
                   setError("Failed to send. Please check your internet connection or try again later.");
                 }
                 setSending(false);
-                }}>
-                
+              }}>
+
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-black">
                     Your Phone Number *
                   </label>
-                  <Input 
-                    name="user_phone" 
-                    type="tel" 
-                    required 
-                    pattern="[0-9]{10}" 
-                    className="bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary py-3 sm:py-4 text-base" 
+                  <Input
+                    name="user_phone"
+                    type="tel"
+                    required
+                    pattern="[0-9]{10}"
+                    className="bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary py-3 sm:py-4 text-base"
                     placeholder="Enter your 10-digit mobile number"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Textarea 
+                  <Textarea
                     name="user_message"
                     required
                     placeholder="Tell us about your moving requirements, number of rooms, locations, preferred dates, etc."
@@ -185,14 +185,14 @@ const Contact = () => {
                     className="bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary resize-none text-base"
                   />
                 </div>
-                
+
                 <Button className="w-full bg-yellow-200 text-blue-600 hover:text-white hover:shadow-button group pt-0 py-3 sm:py-4 text-base sm:text-lg font-semibold touch-manipulation" size="lg" type="submit" disabled={sending}>
                   <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   {sending ? "Sending..." : "Send Message"}
                 </Button>
                 {sent && <div className="text-green-600 mt-2 text-sm sm:text-base font-medium">Message sent successfully!</div>}
                 {error && <div className="text-red-600 mt-2 text-sm sm:text-base">{error}</div>}
-                </form>
+              </form>
             </motion.div>
           </div>
         </div>
@@ -237,7 +237,7 @@ const Contact = () => {
               Located in the heart of Delhi, easily accessible from all major areas
             </p>
           </motion.div>
-          
+
           <motion.div {...fadeInUp} className="bg-gray-200 rounded-2xl overflow-hidden">
             <div className="flex flex-col items-center justify-center w-full">
               <div className="w-full h-64 sm:h-80 lg:h-96 relative">

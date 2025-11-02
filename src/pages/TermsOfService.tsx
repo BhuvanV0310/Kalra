@@ -153,7 +153,7 @@ const TermsOfService = () => {
                   </div>
                   <div className="flex items-center gap-2 text-gray-700">
                     <Mail size={16} className="text-primary" />
-                    <span>support@kalrapackersmovers.in</span>
+                    <span>mail@kalrapackersmovers.in</span>
                   </div>
                   <div className="flex items-start gap-2 text-gray-700">
                     <Shield size={16} className="text-primary mt-1" />

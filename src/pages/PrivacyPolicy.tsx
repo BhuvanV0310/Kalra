@@ -238,7 +238,7 @@ const PrivacyPolicy = () => {
                     <Mail size={18} className="text-primary" />
                     <div>
                       <p className="font-medium">Email</p>
-                      <p>support@kalrapackersmovers.in</p>
+                      <p>mail@kalrapackersmovers.in</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 text-gray-700">
